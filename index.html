@@ -1,0 +1,4101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme-mode="light" data-effective-mode="light" data-color-scheme="klein" style="--body-font: var(--font-serif); --body-font-size: 17px; --body-line-height: 1.9; --plate-opacity: 0.90; --bg-grayscale: 100%; --bg-blur: 0px; --bg-mask-opacity: 0.16; --bg-size: 320px 320px; --bg-repeat: repeat;"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寸铁集 · 惟光 — 文字、诗与科研手记</title>
+  <meta name="description" content="寸铁集（惟光）：安静、克制的个人文字文集与科研手记。收录随笔、感想、现代诗作，以及科研感悟与科研技巧。">
+  <meta name="author" content="惟光">
+  <!-- OpenGraph / 社交分享预览卡片基础 SEO -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="寸铁集 · 惟光 — 文字、诗与科研手记">
+  <meta property="og:description" content="寸铁铸锋，惟光显影。记录吉光片羽的文学瞬间，也记录实验室里漫长的求索。">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="寸铁集 · 惟光">
+  <meta name="twitter:description" content="安静、克制的个人文字文集与科研手记。">
+  <link rel="alternate" type="application/rss+xml" title="寸铁集 RSS 订阅" href="./feed.xml">
+
+  <style>
+    /* ==========================================================================
+       1. 黑白灰基底 + 5% 克制撞色点缀系统 (明暗双模式自适应对比度)
+       ========================================================================== */
+    :root {
+      --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "Georgia", "Times New Roman", serif;
+      --font-sans: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+      --body-font: var(--font-serif);
+      --body-font-size: 17px;
+      --body-line-height: 1.9;
+      --plate-opacity: 0.90;
+      --plate-blur: 12px;
+
+      /* 背景图层动态参数 */
+      --bg-blur: 0px;
+      --bg-mask-opacity: 0.16;
+      --bg-grayscale: 100%;
+      --bg-size: cover;
+      --bg-repeat: no-repeat;
+      --bg-position: center center;
+
+      --transition-fast: 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+      --transition-soft: 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* 明亮模式黑白灰基底 */
+    :root,
+    [data-effective-mode="light"] {
+      --bg-primary: #FAFAFA;
+      --bg-elevated: #FFFFFF;
+      --bg-secondary: #F2F2F2;
+      --bg-code: #F4F4F4;
+      --plate-rgb: 250, 250, 250;
+      --mask-rgb: 250, 250, 250;
+      --text-primary: #1A1A1A;
+      --text-secondary: #6B6B6B;
+      --text-muted: #949494;
+      --border-color: #E5E5E5;
+      --border-strong: #C8C8C8;
+      --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    /* 深色模式黑白灰基底 */
+    [data-effective-mode="dark"] {
+      --bg-primary: #111111;
+      --bg-elevated: #171717;
+      --bg-secondary: #1E1E1E;
+      --bg-code: #181818;
+      --plate-rgb: 17, 17, 17;
+      --mask-rgb: 17, 17, 17;
+      --text-primary: #E8E8E8;
+      --text-secondary: #8E8E8E;
+      --text-muted: #666666;
+      --border-color: #2A2A2A;
+      --border-strong: #454545;
+      --shadow-subtle: 0 8px 32px rgba(0, 0, 0, 0.48);
+    }
+
+    /* --------------------------------------------------------------------------
+       10 套撞色点缀方案（严格控制在 5% 视觉面积，明暗双模式高对比度校准）
+       -------------------------------------------------------------------------- */
+    /* 方案 1：纯粹黑白灰 (默认款) */
+    [data-color-scheme="mono"][data-effective-mode="light"] {
+      --accent: #1A1A1A;
+      --accent-text: #1A1A1A;
+      --accent-contrast: #FAFAFA;
+      --accent-soft: rgba(26, 26, 26, 0.08);
+    }
+    [data-color-scheme="mono"][data-effective-mode="dark"] {
+      --accent: #E8E8E8;
+      --accent-text: #E8E8E8;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(232, 232, 232, 0.12);
+    }
+
+    /* 方案 2：黑白灰 + 克莱因蓝 (#002FA7) */
+    [data-color-scheme="klein"][data-effective-mode="light"] {
+      --accent: #002FA7;
+      --accent-text: #002FA7;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(0, 47, 167, 0.08);
+    }
+    [data-color-scheme="klein"][data-effective-mode="dark"] {
+      --accent: #4D7CFE;
+      --accent-text: #6B93FF;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(77, 124, 254, 0.15);
+    }
+
+    /* 方案 3：黑白灰 + 橙红 (#FF4D1F) */
+    [data-color-scheme="vermilion"][data-effective-mode="light"] {
+      --accent: #FF4D1F;
+      --accent-text: #D9380F;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(255, 77, 31, 0.09);
+    }
+    [data-color-scheme="vermilion"][data-effective-mode="dark"] {
+      --accent: #FF5A30;
+      --accent-text: #FF7452;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(255, 90, 48, 0.15);
+    }
+
+    /* 方案 4：黑白灰 + 酸性黄绿 (#C8F135) - 明亮模式专门做深色文字反差保护 */
+    [data-color-scheme="acid"][data-effective-mode="light"] {
+      --accent: #C8F135;
+      --accent-text: #4F6800;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(200, 241, 53, 0.28);
+    }
+    [data-color-scheme="acid"][data-effective-mode="dark"] {
+      --accent: #C8F135;
+      --accent-text: #C8F135;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(200, 241, 53, 0.14);
+    }
+
+    /* 方案 5：黑白灰 + 暗玫红 (#B0124A) */
+    [data-color-scheme="crimson"][data-effective-mode="light"] {
+      --accent: #B0124A;
+      --accent-text: #B0124A;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(176, 18, 74, 0.08);
+    }
+    [data-color-scheme="crimson"][data-effective-mode="dark"] {
+      --accent: #E84A7F;
+      --accent-text: #F26B97;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(232, 74, 127, 0.15);
+    }
+
+    /* 方案 6（扩展）：黑白灰 + 电光群青 (#5B2EFF) */
+    [data-color-scheme="ultramarine"][data-effective-mode="light"] {
+      --accent: #5B2EFF;
+      --accent-text: #4B1FE6;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(91, 46, 255, 0.08);
+    }
+    [data-color-scheme="ultramarine"][data-effective-mode="dark"] {
+      --accent: #8C6BFF;
+      --accent-text: #A388FF;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(140, 107, 255, 0.15);
+    }
+
+    /* 方案 7（扩展）：黑白灰 + 冷松石绿 (#007A5E) */
+    [data-color-scheme="emerald"][data-effective-mode="light"] {
+      --accent: #007A5E;
+      --accent-text: #006B52;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(0, 122, 94, 0.08);
+    }
+    [data-color-scheme="emerald"][data-effective-mode="dark"] {
+      --accent: #26C49E;
+      --accent-text: #3DD6B1;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(38, 196, 158, 0.15);
+    }
+
+    /* 方案 8（扩展）：黑白灰 + 工业琥珀 (#D97706) */
+    [data-color-scheme="amber"][data-effective-mode="light"] {
+      --accent: #D97706;
+      --accent-text: #B45309;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(217, 119, 6, 0.10);
+    }
+    [data-color-scheme="amber"][data-effective-mode="dark"] {
+      --accent: #FBBF24;
+      --accent-text: #FBBF24;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(251, 191, 36, 0.14);
+    }
+
+    /* 方案 9（扩展）：黑白灰 + 暮山紫 (#6D28D9) */
+    [data-color-scheme="violet"][data-effective-mode="light"] {
+      --accent: #6D28D9;
+      --accent-text: #5B21B6;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(109, 40, 217, 0.08);
+    }
+    [data-color-scheme="violet"][data-effective-mode="dark"] {
+      --accent: #A78BFA;
+      --accent-text: #C4B5FD;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(167, 139, 250, 0.15);
+    }
+
+    /* 方案 10（扩展）：黑白灰 + 冰川青 (#0E7490) */
+    [data-color-scheme="cyan"][data-effective-mode="light"] {
+      --accent: #0E7490;
+      --accent-text: #0E7490;
+      --accent-contrast: #FFFFFF;
+      --accent-soft: rgba(14, 116, 144, 0.08);
+    }
+    [data-color-scheme="cyan"][data-effective-mode="dark"] {
+      --accent: #22D3EE;
+      --accent-text: #67E8F9;
+      --accent-contrast: #111111;
+      --accent-soft: rgba(34, 211, 238, 0.14);
+    }
+
+    /* 全局重置 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::selection {
+      background-color: var(--accent);
+      color: var(--accent-contrast);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: var(--body-font-size);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color var(--transition-soft), color var(--transition-soft);
+    }
+
+    body {
+      font-family: var(--body-font);
+      line-height: var(--body-line-height);
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==========================================================================
+       2. 背景渲染舞台 & 自适应半透明阅读底板
+       ========================================================================== */
+    #bg-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    #bg-image-layer {
+      position: absolute;
+      inset: -28px;
+      background-position: var(--bg-position);
+      background-size: var(--bg-size);
+      background-repeat: var(--bg-repeat);
+      filter: grayscale(var(--bg-grayscale)) blur(var(--bg-blur));
+      transition: opacity 0.45s ease, filter 0.3s ease;
+      opacity: 0;
+    }
+
+    #bg-image-layer.has-bg {
+      opacity: 1;
+    }
+
+    #bg-mask-layer {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(var(--mask-rgb), var(--bg-mask-opacity));
+      transition: background-color 0.3s ease;
+    }
+
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .reading-plate {
+      width: 100%;
+      max-width: 920px;
+      margin: 2.2rem auto;
+      padding: 3.2rem 4.2rem;
+      background-color: rgba(var(--plate-rgb), var(--plate-opacity));
+      backdrop-filter: blur(var(--plate-blur));
+      -webkit-backdrop-filter: blur(var(--plate-blur));
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-subtle);
+      transition: background-color var(--transition-soft), border-color var(--transition-soft);
+      position: relative;
+    }
+
+    /* 顶部 3px 极细撞色线点缀 */
+    .reading-plate::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 88px;
+      height: 3px;
+      background-color: var(--accent);
+      transition: width 0.35s ease, background-color 0.3s ease;
+    }
+
+    .reading-plate:hover::before {
+      width: 140px;
+    }
+
+    .reading-plate.has-toc-layout {
+      max-width: 1100px;
+    }
+
+    .fade-view {
+      animation: gentleFadeIn 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes gentleFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       3. 链接、悬停强调色细线展开、标签与按钮
+       ========================================================================== */
+    a {
+      color: var(--text-primary);
+      text-decoration: none;
+      position: relative;
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    /* 正文与列表标题链接：悬停时底部撞色细线从左向右展开 */
+    .link-underline {
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 0% 1.5px;
+      padding-bottom: 2px;
+      transition: background-size 0.28s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
+    }
+
+    .link-underline:hover {
+      background-size: 100% 1.5px;
+    }
+
+    .btn-mono {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      padding: 0.38rem 0.82rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .btn-mono:hover,
+    .btn-mono.active {
+      background-color: var(--accent);
+      color: var(--accent-contrast);
+      border-color: var(--accent);
+    }
+
+    .btn-subtle {
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid transparent;
+      padding: 0.22rem 0.1rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-subtle:hover,
+    .btn-subtle.active {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent);
+    }
+
+    /* 描边小标签 */
+    .tag-outline {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      padding: 0.12rem 0.54rem;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      background: transparent;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .tag-outline:hover,
+    .tag-outline.active {
+      color: var(--accent-contrast);
+      background-color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .meta-badge-outline {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-strong);
+      padding: 0.14rem 0.58rem;
+      margin-right: 0.45rem;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.03em;
+    }
+
+    .meta-badge-outline::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background-color: var(--accent);
+      margin-right: 0.4rem;
+    }
+
+    /* ==========================================================================
+       4. 顶栏导航（支持多栏目自动收起为「更多 ▾」下拉菜单 + 手机端抽屉）
+       ========================================================================== */
+    .site-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.4rem;
+      margin-bottom: 2.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+    }
+
+    .brand-seal {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .brand-seal::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 7px;
+      height: 7px;
+      background-color: var(--accent);
+    }
+
+    .brand-seal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.28rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--text-primary);
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      padding: 0.25rem 0.05rem;
+      letter-spacing: 0.08em;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent);
+    }
+
+    .nav-link.active {
+      color: var(--text-primary);
+      font-weight: 600;
+      border-bottom-color: var(--accent);
+    }
+
+    /* 导航「更多 ▾」下拉菜单 */
+    .nav-more-wrap {
+      position: relative;
+    }
+
+    .nav-more-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 150px;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-subtle);
+      padding: 0.4rem 0;
+      display: none;
+      z-index: 50;
+    }
+
+    .nav-more-wrap:hover .nav-more-dropdown,
+    .nav-more-dropdown.show {
+      display: block;
+    }
+
+    .nav-more-item {
+      display: block;
+      padding: 0.48rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .nav-more-item:hover,
+    .nav-more-item.active {
+      background-color: var(--accent-soft);
+      color: var(--text-primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      position: relative;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    /* 访客阅读设置浮层（仅保存在访客本地浏览器） */
+    .visitor-reading-popover {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 290px;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-subtle);
+      padding: 1.15rem;
+      z-index: 60;
+      display: none;
+      font-family: var(--font-sans);
+    }
+
+    .visitor-reading-popover.open {
+      display: block;
+    }
+
+    .color-dot-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.45rem;
+    }
+
+    .color-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      cursor: pointer;
+      transition: transform 0.18s ease;
+      position: relative;
+    }
+
+    .color-dot:hover {
+      transform: scale(1.14);
+    }
+
+    .color-dot.active {
+      outline: 2px solid var(--text-primary);
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================================
+       5. 首页海报式不对称刊头 (Oversized Masthead) + 精选 + 编号文章流
+       ========================================================================== */
+    .hero-masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      padding: 1.2rem 0 2.8rem 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2.8rem;
+      align-items: end;
+      position: relative;
+    }
+
+    .hero-giant-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: 0.12em;
+      color: var(--text-primary);
+      margin-bottom: 1.2rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hero-giant-title .accent-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: var(--accent);
+      margin-left: 0.15rem;
+      vertical-align: baseline;
+    }
+
+    .hero-signature {
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      line-height: 1.95;
+      color: var(--text-primary);
+      max-width: 600px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-subline {
+      margin-top: 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    /* 竖排刊头点缀 */
+    .hero-vertical-stamp {
+      writing-mode: vertical-rl;
+      font-family: var(--font-serif);
+      font-size: 0.82rem;
+      letter-spacing: 0.28em;
+      color: var(--text-secondary);
+      border-left: 1.5px solid var(--accent);
+      padding-left: 0.65rem;
+      height: 132px;
+      user-select: none;
+    }
+
+    /* 首屏精选文章不对称杂志框 */
+    .featured-box {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 1.5rem;
+      padding: 2.1rem 2.2rem;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-elevated);
+      margin-bottom: 3.4rem;
+      position: relative;
+      transition: border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .featured-box:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .featured-index-col {
+      border-right: 1px solid var(--border-color);
+      padding-right: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .featured-num {
+      font-family: var(--font-mono);
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent-text);
+    }
+
+    .featured-vertical-label {
+      writing-mode: vertical-rl;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    .featured-kicker {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      color: var(--text-secondary);
+      margin-bottom: 0.65rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .featured-title {
+      font-family: var(--font-serif);
+      font-size: 1.52rem;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 0.85rem;
+    }
+
+    .featured-excerpt {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* 列表区域标题栏 */
+    .section-header-bar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .section-header-bar::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    .section-count {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+    }
+
+    /* 展示样式 1：大号数字编号列表 (displayStyle: 'list') */
+    .post-list {
+      list-style: none;
+    }
+
+    .post-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1.1rem;
+      padding: 1.65rem 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: transform var(--transition-fast);
+    }
+
+    .post-item:hover {
+      transform: translateX(4px);
+    }
+
+    .post-item-num {
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding-top: 0.22rem;
+      transition: color var(--transition-fast);
+    }
+
+    .post-item:hover .post-item-num {
+      color: var(--accent-text);
+    }
+
+    .post-item-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .post-item-title {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      font-weight: 600;
+      line-height: 1.48;
+    }
+
+    .post-item-meta {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .post-item-summary {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-item-poem-line {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      letter-spacing: 0.05em;
+      padding-left: 0.85rem;
+      border-left: 2px solid var(--accent);
+      margin-top: 0.35rem;
+    }
+
+    /* 展示样式 2：杂志卡片网格 (displayStyle: 'card') */
+    .post-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.4rem;
+      list-style: none;
+    }
+
+    .post-card-item {
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-elevated);
+      padding: 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .post-card-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* 子栏目筛选条 */
+    .subcat-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       6. 科研与普通文章阅读页 + 侧边浮动目录 (Sticky TOC)
+       ========================================================================== */
+    .article-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .article-layout.with-toc {
+      grid-template-columns: minmax(0, 700px) 220px;
+      justify-content: space-between;
+    }
+
+    .article-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .article-category-line {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-size: 1.88rem;
+      font-weight: 700;
+      line-height: 1.42;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .article-meta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .article-prose {
+      font-family: var(--body-font);
+      font-size: 1rem;
+      line-height: var(--body-line-height);
+      color: var(--text-primary);
+      word-break: break-word;
+    }
+
+    .article-prose p {
+      margin-bottom: 1.45em;
+      text-align: justify;
+    }
+
+    .article-prose h2 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 2.3em 0 0.85em 0;
+      padding-bottom: 0.35em;
+      border-bottom: 1px solid var(--border-color);
+      letter-spacing: 0.03em;
+      scroll-margin-top: 2rem;
+      position: relative;
+    }
+
+    .article-prose h2::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 36px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    .article-prose h3 {
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin: 1.8em 0 0.65em 0;
+      scroll-margin-top: 2rem;
+    }
+
+    .article-prose blockquote {
+      margin: 1.8em 0;
+      padding: 0.85em 1.4em;
+      border-left: 2.5px solid var(--accent);
+      background-color: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-family: var(--font-serif);
+    }
+
+    .article-prose blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-prose ul,
+    .article-prose ol {
+      margin: 0 0 1.45em 1.6em;
+    }
+
+    .article-prose li {
+      margin-bottom: 0.45em;
+    }
+
+    .article-prose code {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      background-color: var(--bg-code);
+      padding: 0.14em 0.4em;
+      border: 1px solid var(--border-color);
+    }
+
+    /* 代码块（与当前撞色协调的语法高亮） */
+    .code-block-wrapper {
+      margin: 1.8em 0;
+      border: 1px solid var(--border-strong);
+      border-left: 3px solid var(--accent);
+      background-color: var(--bg-code);
+    }
+
+    .code-block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.42rem 0.95rem;
+      border-bottom: 1px solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      background-color: var(--bg-secondary);
+    }
+
+    .code-copy-btn {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      color: var(--text-primary);
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      padding: 0.12rem 0.55rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .code-copy-btn:hover {
+      background-color: var(--accent);
+      color: var(--accent-contrast);
+      border-color: var(--accent);
+    }
+
+    .code-block-wrapper pre {
+      margin: 0;
+      padding: 1.1rem 1.2rem;
+      overflow-x: auto;
+      line-height: 1.65;
+    }
+
+    .code-block-wrapper pre code {
+      border: none;
+      padding: 0;
+      background: transparent;
+      font-size: 0.84rem;
+      color: var(--text-primary);
+    }
+
+    .tok-kw { font-weight: 700; color: var(--accent-text); }
+    .tok-fn { font-weight: 600; text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; }
+    .tok-str { color: var(--text-secondary); font-style: italic; }
+    .tok-num { font-family: var(--font-mono); color: var(--text-primary); }
+    .tok-com { color: var(--text-muted); font-style: italic; }
+
+    /* LaTeX 公式块 */
+    .math-inline {
+      font-family: "Latin Modern Math", "Cambria Math", "Times New Roman", var(--font-serif);
+      font-style: italic;
+      padding: 0 0.12em;
+      white-space: nowrap;
+    }
+
+    .math-Inline-roman { font-style: normal; }
+
+    .math-block {
+      margin: 1.8em 0;
+      padding: 1.1rem 1.4rem;
+      background-color: var(--bg-elevated);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      font-family: "Latin Modern Math", "Cambria Math", "Times New Roman", var(--font-serif);
+      font-size: 1.06rem;
+      text-align: center;
+      overflow-x: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .math-block-content { margin: 0 auto; line-height: 1.8; }
+    .math-eq-num { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); margin-left: 1rem; }
+    .math-frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 0.2em; font-size: 0.9em; }
+    .math-frac-num { border-bottom: 1px solid var(--text-primary); padding: 0 0.2em 0.08em 0.2em; line-height: 1.2; }
+    .math-frac-den { padding: 0.08em 0.2em 0 0.2em; line-height: 1.2; }
+    .math-op-limits { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 0.15em; line-height: 1; }
+    .math-op-sup, .math-op-sub { font-size: 0.65em; font-style: italic; }
+    .math-op-sym { font-size: 1.35em; font-style: normal; line-height: 1.05; }
+
+    /* 学术三线表 */
+    .table-wrap { margin: 1.8em 0; overflow-x: auto; }
+    .article-prose table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      border-top: 2px solid var(--text-primary);
+      border-bottom: 2px solid var(--text-primary);
+    }
+    .article-prose th {
+      font-weight: 600;
+      text-align: left;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--text-primary);
+      background-color: var(--bg-secondary);
+    }
+    .article-prose td {
+      padding: 0.58rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* 图注说明 */
+    .article-figure { margin: 2.2em 0; text-align: center; }
+    .article-figure-box {
+      border: 1px solid var(--border-color);
+      padding: 1.15rem;
+      background-color: var(--bg-elevated);
+      display: inline-block;
+      max-width: 100%;
+    }
+    .article-figure img, .article-figure svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .article-figcaption {
+      margin-top: 0.65rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .footnote-ref {
+      font-family: var(--font-mono);
+      font-size: 0.72em;
+      vertical-align: super;
+      line-height: 0;
+      margin: 0 0.15em;
+      color: var(--accent-text);
+    }
+
+    .footnotes-section, .references-section {
+      margin-top: 2.8rem;
+      padding-top: 1.3rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* 侧边目录 (Sticky TOC) */
+    .toc-sidebar {
+      position: sticky;
+      top: 2rem;
+      border-left: 1px solid var(--border-color);
+      padding-left: 1.15rem;
+      font-family: var(--font-sans);
+    }
+
+    .toc-heading {
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.8rem;
+    }
+
+    .toc-list { list-style: none; }
+    .toc-item { margin-bottom: 0.48rem; line-height: 1.45; }
+    .toc-item.toc-h3 { padding-left: 0.8rem; }
+    .toc-link {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      display: block;
+      border-left: 2px solid transparent;
+      padding-left: 0.45rem;
+      margin-left: -1.2rem;
+      transition: all var(--transition-fast);
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--text-primary);
+      border-left-color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       7. 诗歌专属独立阅读页（只留标题、诗和日期，极少量撞色点缀）
+       ========================================================================== */
+    .poetry-dedicated-view {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 1.8rem 1rem 4rem 1rem;
+    }
+
+    .poetry-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .poetry-stage {
+      padding: 1rem 0 3.5rem 0;
+    }
+
+    .poetry-stage.align-center { text-align: center; }
+    .poetry-stage.align-left { text-align: left; padding-left: 12%; }
+
+    .poetry-only-title {
+      font-family: var(--font-serif);
+      font-size: 2.05rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--text-primary);
+      margin-bottom: 3rem;
+      line-height: 1.5;
+      display: inline-block;
+      position: relative;
+    }
+
+    .poetry-only-title::after {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 2px;
+      background-color: var(--accent);
+      margin: 0.85rem auto 0 auto;
+    }
+
+    .poetry-stage.align-left .poetry-only-title::after {
+      margin-left: 0;
+    }
+
+    .poetry-stanza {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      line-height: 2.4;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      margin-bottom: 2.4rem;
+      white-space: pre-line;
+    }
+
+    .poetry-only-date {
+      margin-top: 4rem;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.16em;
+    }
+
+    /* ==========================================================================
+       8. 归档、搜索、页脚与隐藏作者工作台抽屉
+       ========================================================================== */
+    .archive-year-group { margin-bottom: 2.5rem; }
+    .archive-year-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+    }
+    .archive-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0.62rem 0;
+      border-bottom: 1px dashed var(--border-color);
+      gap: 1rem;
+    }
+
+    .input-mono {
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+      color: var(--text-primary);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      padding: 0.55rem 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+
+    .input-mono:focus { border-color: var(--accent); }
+
+    .site-footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    /* 连续点击 4 次触发作者工作台的版权区域：对访客完全无异样 */
+    #footer-copyright-trigger {
+      user-select: none;
+      cursor: default;
+    }
+
+    /* 隐藏式作者专属工作台（默认完全不可见） */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.48);
+      z-index: 95;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.26s ease;
+    }
+    .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+
+    .studio-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 500px;
+      max-width: 95vw;
+      height: 100vh;
+      background-color: var(--bg-elevated);
+      color: var(--text-primary);
+      border-left: 2px solid var(--accent);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-sans);
+    }
+    .studio-drawer.open { transform: translateX(0); }
+
+    .drawer-header {
+      padding: 1.15rem 1.4rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+      overflow-x: auto;
+    }
+
+    .drawer-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.62rem 0.4rem;
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .drawer-tab.active {
+      color: var(--text-primary);
+      font-weight: 600;
+      border-bottom-color: var(--accent);
+      background-color: var(--bg-elevated);
+    }
+
+    .drawer-body { padding: 1.35rem 1.4rem; overflow-y: auto; flex: 1; }
+    .drawer-footer {
+      padding: 0.95rem 1.4rem;
+      border-top: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .control-group {
+      margin-bottom: 1.3rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.79rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .control-hint {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-top: 0.35rem;
+    }
+
+    /* 模态弹窗 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.62);
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-card {
+      background-color: var(--bg-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      border-top: 3px solid var(--accent);
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    /* 手机端抽屉导航 */
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background-color: var(--bg-elevated);
+      border-right: 1px solid var(--border-strong);
+      z-index: 98;
+      transform: translateX(-100%);
+      transition: transform 0.28s ease;
+      padding: 1.6rem;
+    }
+    .mobile-nav-drawer.open { transform: translateX(0); }
+
+    @media (max-width: 900px) {
+      .article-layout.with-toc { grid-template-columns: 1fr; }
+      .toc-sidebar {
+        position: static;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+        order: -1;
+      }
+      .reading-plate { margin: 0; padding: 2rem 1.4rem; border-left: none; border-right: none; }
+      .hero-vertical-stamp { display: none; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-desktop { display: none; }
+      .mobile-menu-btn { display: inline-block; }
+      .featured-box { grid-template-columns: 1fr; gap: 0.8rem; padding: 1.4rem 1.2rem; }
+      .featured-index-col { border-right: none; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; flex-direction: row; align-items: center; }
+      .featured-vertical-label { writing-mode: horizontal-tb; margin-top: 0; }
+      .post-item { grid-template-columns: 36px 1fr; gap: 0.6rem; }
+      .post-item-header { flex-direction: column; gap: 0.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 背景图层 -->
+  <div id="bg-stage" aria-hidden="true">
+    <div id="bg-image-layer" class="has-bg" style="background-image: url(&quot;data:image/svg+xml;utf8,%0A%20%20%20%20%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%20viewBox%3D%220%200%20400%20400%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cfilter%20id%3D%22g%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.7%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%22linear%22%20slope%3D%220.08%22%2F%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%0A%20%20%20%20%20%20%20%20%20%20%3Crect%20width%3D%22400%22%20height%3D%22400%22%20filter%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fsvg%3E&quot;);"></div>
+    <div id="bg-mask-layer"></div>
+  </div>
+
+  <!-- 手机端简洁抽屉导航 -->
+  <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="移动端导航">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.6rem; padding-bottom:0.8rem; border-bottom:1px solid var(--border-color);">
+      <span style="font-family:var(--font-serif); font-weight:700; letter-spacing:0.12em;" id="mobile-drawer-title">寸铁集</span>
+      <button class="btn-subtle" onclick="toggleMobileMenu(false)">关闭 ×</button>
+    </div>
+    <div id="mobile-nav-list" style="display:flex; flex-direction:column; gap:0.9rem;">
+        <a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('home')">首页</a>
+        <a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('category', 'poetry')">诗歌</a><a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('category', 'reading')">读书</a><a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('category', 'essay')">随笔</a><a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('category', 'research')">格物</a>
+        <a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('archive')">年月归档</a>
+        <a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('tags')">标签索引</a>
+      </div>
+  </nav>
+
+  <div class="site-wrapper">
+    <main class="reading-plate" id="reading-plate">
+      <!-- 顶部导航栏（仅展示阅读与导航，不含任何后台编辑按钮） -->
+      <header class="site-header" id="site-header" style="display: flex;">
+        <div class="brand-group" onclick="navigateTo('home')" title="返回首页">
+          <div class="brand-seal" id="brand-avatar-box">惟</div>
+          <div class="brand-title" id="brand-title-text">寸铁集</div>
+        </div>
+
+        <nav class="nav-desktop" id="nav-desktop" aria-label="主导航"><a class="nav-link active" onclick="navigateTo('home')">首页</a><a class="nav-link " onclick="navigateTo('category', 'poetry')">诗歌</a><a class="nav-link " onclick="navigateTo('category', 'reading')">读书</a><a class="nav-link " onclick="navigateTo('category', 'essay')">随笔</a><a class="nav-link " onclick="navigateTo('category', 'research')">格物</a><a class="nav-link " onclick="navigateTo('archive')">归档</a><a class="nav-link " onclick="navigateTo('tags')">标签</a></nav>
+
+        <div class="header-actions">
+          <button class="mobile-menu-btn" onclick="toggleMobileMenu(true)">目录 ☰</button>
+          <button class="btn-subtle" onclick="navigateTo('search')" title="站内本地全文检索">搜索</button>
+          <span style="color:var(--border-strong)">·</span>
+          <button class="btn-subtle" onclick="toggleVisitorPopover(event)" id="visitor-reading-btn" title="调节字号、行距、字体与预览配色">阅读</button>
+          <span style="color:var(--border-strong)">·</span>
+          <button class="btn-subtle" onclick="cycleVisitorThemeMode()" id="quick-theme-btn" title="切换明亮/深色/跟随系统">明亮</button>
+
+          <!-- 访客专属轻量阅读浮层（仅保存在访客浏览器，不修改站点本身） -->
+          <div class="visitor-reading-popover" id="visitor-reading-popover" onclick="event.stopPropagation()">
+            <div style="font-size:0.78rem; font-weight:600; margin-bottom:0.65rem; display:flex; justify-content:space-between;">
+              <span>阅读排版偏好（本地保存）</span>
+              <button class="btn-subtle" style="font-size:0.72rem;" onclick="resetVisitorPrefs()">重置</button>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.45rem; margin-bottom:0.8rem;">
+              <button class="btn-mono active" id="vis-font-serif" onclick="setVisitorFont('serif')">思源宋体 (衬线)</button>
+              <button class="btn-mono" id="vis-font-sans" onclick="setVisitorFont('sans')">思源黑体 (无衬线)</button>
+            </div>
+            <div style="font-size:0.75rem; color:var(--text-secondary); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+              <span>字号大小</span>
+              <span id="vis-val-size">17px</span>
+            </div>
+            <input type="range" min="15" max="21" step="1" id="vis-slider-size" oninput="setVisitorSize(this.value)" style="width:100%; accent-color:var(--accent); margin-bottom:0.7rem;">
+
+            <div style="font-size:0.75rem; color:var(--text-secondary); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+              <span>正文行距</span>
+              <span id="vis-val-lh">1.9</span>
+            </div>
+            <input type="range" min="1.65" max="2.25" step="0.05" id="vis-slider-lh" oninput="setVisitorLineHeight(this.value)" style="width:100%; accent-color:var(--accent); margin-bottom:0.8rem;">
+
+            <div style="font-size:0.75rem; color:var(--text-secondary); margin-bottom:0.3rem;">撞色点缀预览：</div>
+            <div class="color-dot-row" id="visitor-color-dots">
+        <span class="color-dot" data-scheme="mono" title="黑白灰（默认纯净）" style="background-color:#1A1A1A;" onclick="setVisitorColorScheme('mono')"></span>
+      
+        <span class="color-dot active" data-scheme="klein" title="克莱因蓝 (Klein Blue)" style="background-color:#002FA7;" onclick="setVisitorColorScheme('klein')"></span>
+      
+        <span class="color-dot" data-scheme="vermilion" title="朱砂橙红 (Vermilion)" style="background-color:#FF4D1F;" onclick="setVisitorColorScheme('vermilion')"></span>
+      
+        <span class="color-dot" data-scheme="acid" title="酸性黄绿 (Acid Lime)" style="background-color:#C8F135;" onclick="setVisitorColorScheme('acid')"></span>
+      
+        <span class="color-dot" data-scheme="crimson" title="暗玫红 (Dark Crimson)" style="background-color:#B0124A;" onclick="setVisitorColorScheme('crimson')"></span>
+      
+        <span class="color-dot" data-scheme="ultramarine" title="电光群青 (Ultramarine)" style="background-color:#5B2EFF;" onclick="setVisitorColorScheme('ultramarine')"></span>
+      
+        <span class="color-dot" data-scheme="emerald" title="冷松石绿 (Cold Emerald)" style="background-color:#007A5E;" onclick="setVisitorColorScheme('emerald')"></span>
+      
+        <span class="color-dot" data-scheme="amber" title="工业琥珀 (Industrial Amber)" style="background-color:#D97706;" onclick="setVisitorColorScheme('amber')"></span>
+      
+        <span class="color-dot" data-scheme="violet" title="暮山紫 (Dusk Violet)" style="background-color:#6D28D9;" onclick="setVisitorColorScheme('violet')"></span>
+      
+        <span class="color-dot" data-scheme="cyan" title="冰川青 (Glacier Cyan)" style="background-color:#0E7490;" onclick="setVisitorColorScheme('cyan')"></span>
+      </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- 主内容动态视图区 -->
+      <div id="app-view" class="fade-view">
+        <section class="hero-masthead">
+          <div>
+            <h1 class="hero-giant-title">寸铁集<span class="accent-dot"></span></h1>
+            <p class="hero-signature">手握寸铁，于荒原与晶格之间刻下微光。记录吉光片羽的诗与随笔，也记录实验室里漫长的求索。</p>
+            <div class="hero-subline">CUNTIE COLLECTION · BY WEIGUANG · LITERATURE &amp; RESEARCH</div>
+          </div>
+          <div class="hero-vertical-stamp">致敬没有被听到的</div>
+        </section>
+
+        
+          <section class="featured-box">
+            <div class="featured-index-col">
+              <div class="featured-num">01</div>
+              <div class="featured-vertical-label">FEATURED</div>
+            </div>
+            <div>
+              <div class="featured-kicker">
+                <span>首屏精选 · 随笔</span>
+                <span style="font-family:var(--font-mono);">2026-10-12</span>
+              </div>
+              <h2 class="featured-title">
+                <a class="link-underline" onclick="navigateTo('post', 'autumn-rain-and-old-pages')">旧书页里的十月与慢钟</a>
+              </h2>
+              <p class="featured-excerpt">十月的雨总是先落在北侧的苦楝树上，再沿着铅灰色的窗框漫进阅览室。翻开四十年前的旧印本，纸页间的纤维与停顿的钟摆声让人重新辨认时间的刻度。</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                  <span class="tag-outline" onclick="navigateTo('tags', '秋日')">#秋日</span><span class="tag-outline" onclick="navigateTo('tags', '旧书')">#旧书</span><span class="tag-outline" onclick="navigateTo('tags', '热力学')">#热力学</span><span class="tag-outline" onclick="navigateTo('tags', '独处')">#独处</span>
+                </div>
+                <a class="link-underline" style="font-family:var(--font-sans); font-size:0.8rem; font-weight:600;" onclick="navigateTo('post', 'autumn-rain-and-old-pages')">展卷阅读 →</a>
+              </div>
+            </div>
+          </section>
+        
+
+        <section>
+          <div class="section-header-bar">
+            <h2 class="section-heading">最新文章与诗稿</h2>
+            <span class="section-count">INDEX / 共 5 篇</span>
+          </div>
+          
+        <ul class="post-list">
+          
+              <li class="post-item">
+                <div class="post-item-num">01</div>
+                <div>
+                  <div class="post-item-header">
+                    <h3 class="post-item-title"><a class="link-underline" onclick="navigateTo('post', 'autumn-rain-and-old-pages')">旧书页里的十月与慢钟</a></h3>
+                    <div class="post-item-meta">2026-10-12 · 随笔</div>
+                  </div>
+                  <p class="post-item-summary">十月的雨总是先落在北侧的苦楝树上，再沿着铅灰色的窗框漫进阅览室。翻开四十年前的旧印本，纸页间的纤维与停顿的钟摆声让人重新辨认时间的刻度。</p>
+                </div>
+              </li>
+            
+                <li class="post-item">
+                  <div class="post-item-num">02</div>
+                  <div>
+                    <div class="post-item-header">
+                      <h3 class="post-item-title"><a class="link-underline" onclick="navigateTo('post', 'measuring-snow-at-night')">在冬夜测量雪的重量</a></h3>
+                      <div class="post-item-meta">2026-10-08 · 诗歌</div>
+                    </div>
+                    <div class="post-item-poem-line">「玻璃窗结出第一层薄霜时，我们停止了交谈」</div>
+                  </div>
+                </li>
+              
+              <li class="post-item">
+                <div class="post-item-num">03</div>
+                <div>
+                  <div class="post-item-header">
+                    <h3 class="post-item-title"><a class="link-underline" onclick="navigateTo('post', 'slow-science-reflection')">慢科研：在追逐指标的时代保留一点问题意识</a></h3>
+                    <div class="post-item-meta">2026-10-03 · 格物 · 科研感悟</div>
+                  </div>
+                  <p class="post-item-summary">当发表周期与量化指标成为衡量学术工作的唯一标尺，我们往往容易把「高频产出」误认为「深度推进」。回看科学史上真正具有生命力的工作，往往始于对一个笨问题的长久凝视。</p>
+                </div>
+              </li>
+            
+              <li class="post-item">
+                <div class="post-item-num">04</div>
+                <div>
+                  <div class="post-item-header">
+                    <h3 class="post-item-title"><a class="link-underline" onclick="navigateTo('post', 'reproducible-computational-experiments')">计算与理论推导的可复现性清单：从配分函数到数值稳定性</a></h3>
+                    <div class="post-item-meta">2026-09-26 · 格物 · 科研技巧</div>
+                  </div>
+                  <p class="post-item-summary">为什么同一套理论模型在不同数值精度或采样步长下会给出截然不同的收敛行为？本文梳理计算研究中的病态条件数、Log-Sum-Exp 配分函数防溢出技巧与确定性代码规范。</p>
+                </div>
+              </li>
+            
+              <li class="post-item">
+                <div class="post-item-num">05</div>
+                <div>
+                  <div class="post-item-header">
+                    <h3 class="post-item-title"><a class="link-underline" onclick="navigateTo('post', 'honesty-of-spectator')">旁观者的诚实：读《窄门》与笔记本边缘的批注</a></h3>
+                    <div class="post-item-meta">2026-09-18 · 读书</div>
+                  </div>
+                  <p class="post-item-summary">重读纪德的《窄门》，发觉年轻时容易被那种近乎苦行的自我牺牲所打动，而今却更留心书信与日记体叙事背后那种近乎冷酷的自我审视。</p>
+                </div>
+              </li>
+            
+        </ul>
+      
+        </section>
+      </div>
+
+      <!-- 页脚（连续点击左侧版权文字 4 次唤醒作者工作台） -->
+      <footer class="site-footer" id="site-footer" style="display: flex;">
+        <div id="footer-copyright-trigger" onclick="handleCopyrightSecretClick()">© 2026 寸铁集 · 惟光</div>
+        <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;" id="footer-links-row">
+          <a class="link-underline" onclick="navigateTo('archive')" style="font-size:0.78rem; color:var(--text-secondary);">年月归档</a>
+          <a class="link-underline" onclick="navigateTo('tags')" style="font-size:0.78rem; color:var(--text-secondary);">标签索引</a>
+          <a class="link-underline" onclick="openModal('rss-modal')" style="font-size:0.78rem; color:var(--text-secondary);">RSS 订阅</a>
+          <a class="link-underline" onclick="openModal('sitemap-modal')" style="font-size:0.78rem; color:var(--text-secondary);">Sitemap</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       隐藏式作者专属工作台（仅在连续点击版权 4 次 / Ctrl+Shift+E / #studio 时弹出）
+       ========================================================================== -->
+  <div class="drawer-backdrop" id="drawer-backdrop" onclick="closeStudio()"></div>
+  <aside class="studio-drawer" id="studio-drawer" aria-label="寸铁集作者专属隐藏工作台">
+    <div class="drawer-header">
+      <div>
+        <div style="font-family:var(--font-serif); font-weight:700; font-size:1.05rem;">寸铁集 · 作者隐藏工作台</div>
+        <div style="font-size:0.7rem; color:var(--text-secondary);">已通过暗号解锁 · 普通访客无法看到此面板</div>
+      </div>
+      <button class="btn-mono" onclick="closeStudio()">关闭 ×</button>
+    </div>
+
+    <div class="drawer-tabs">
+      <button class="drawer-tab active" data-tab="site" onclick="switchStudioTab('site')">站点与撞色</button>
+      <button class="drawer-tab" data-tab="cats" onclick="switchStudioTab('cats')">栏目与多级目录</button>
+      <button class="drawer-tab" data-tab="bg" onclick="switchStudioTab('bg')">自定义背景</button>
+      <button class="drawer-tab" data-tab="write" onclick="switchStudioTab('write')">文章 (.md)</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Tab 1: 站点信息与 10 套撞色配置 -->
+      <div class="studio-pane" id="pane-site" style="display: block;">
+        <div class="control-group">
+          <div class="control-label">
+            <span>全站默认撞色方案（5% 面积克制点缀）</span>
+            <button class="btn-subtle" onclick="openModal('scheme-gallery-modal')">同屏对比明/暗效果 →</button>
+          </div>
+          <select class="input-mono" id="cfg-color-scheme" onchange="updateDefaultColorScheme(this.value)">
+            <option value="mono">1. 黑白灰（纯净默认款 #1A1A1A）</option>
+            <option value="klein">2. 黑白灰 + 克莱因蓝 (#002FA7)</option>
+            <option value="vermilion">3. 黑白灰 + 朱砂橙红 (#FF4D1F)</option>
+            <option value="acid">4. 黑白灰 + 酸性黄绿 (#C8F135)</option>
+            <option value="crimson">5. 黑白灰 + 暗玫红 (#B0124A)</option>
+            <option value="ultramarine">6. 黑白灰 + 电光群青 (#5B2EFF)</option>
+            <option value="emerald">7. 黑白灰 + 冷松石绿 (#007A5E)</option>
+            <option value="amber">8. 黑白灰 + 工业琥珀 (#D97706)</option>
+            <option value="violet">9. 黑白灰 + 暮山紫 (#6D28D9)</option>
+            <option value="cyan">10. 黑白灰 + 冰川青 (#0E7490)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label"><span>站名 (Site Title)</span></div>
+          <input type="text" class="input-mono" id="cfg-site-title" oninput="updateSiteInfo()">
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>作者笔名 (Author)</span></div>
+          <input type="text" class="input-mono" id="cfg-site-author" oninput="updateSiteInfo()">
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>首页大标题旁竖排印章字</span></div>
+          <input type="text" class="input-mono" id="cfg-vertical-stamp" oninput="updateSiteInfo()">
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>首页首屏个人签名</span></div>
+          <textarea class="input-mono" id="cfg-site-signature" rows="2" oninput="updateSiteInfo()"></textarea>
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>签名副标题 (英文/格言)</span></div>
+          <input type="text" class="input-mono" id="cfg-site-sub" oninput="updateSiteInfo()">
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>左上角印章字 或 头像图片路径</span></div>
+          <div style="display:flex; gap:0.5rem;">
+            <input type="text" class="input-mono" id="cfg-avatar-text" maxlength="2" style="width:80px;" oninput="updateSiteInfo()">
+            <input type="text" class="input-mono" id="cfg-avatar-img" placeholder="或填图片路径 /images/avatar.jpg" oninput="updateSiteInfo()">
+          </div>
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>页脚版权文字（点击4次唤醒此处）</span></div>
+          <input type="text" class="input-mono" id="cfg-site-footer" oninput="updateSiteInfo()">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label"><span>Giscus 静态评论与草稿预览</span></div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
+            <span style="font-size:0.8rem;">开启文章底部评论区（默认关闭）</span>
+            <input type="checkbox" id="cfg-comments-toggle" onchange="updateSiteInfo()" style="width:17px;height:17px;accent-color:var(--accent);">
+          </div>
+          <input type="text" class="input-mono" id="cfg-giscus-repo" placeholder="可选：Giscus 仓库 (如 weiguang/cuntie-comments)" oninput="updateSiteInfo()" style="margin-bottom:0.65rem;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-size:0.8rem;">作者预览模式：显示未发布草稿 (`draft: true`)</span>
+            <input type="checkbox" id="cfg-drafts-toggle" onchange="updateSiteInfo()" style="width:17px;height:17px;accent-color:var(--accent);">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: 栏目与多级目录动态定义 + 一键现场演示 -->
+      <div class="studio-pane" id="pane-cats" style="display: none;">
+        <div class="control-group">
+          <div class="control-label">
+            <span>栏目架构实时演示（防死链与多级目录）</span>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button class="btn-mono" style="flex:1; justify-content:center;" onclick="runLiveCategoryDemo()">
+              ▶ 演示：新增「读书」+ 改名「科研」为「格物」+ 调序
+            </button>
+            <button class="btn-mono" onclick="restoreDefaultCategories()">恢复初始4栏目</button>
+          </div>
+          <div class="control-hint">
+            点击演示后，全站导航栏、首页、归档自动更新；原归属「科研」的文章通过 <code>aliases</code> 自动归入「格物」，若删除栏目则自动归入「未分类」，无任何死链。
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>当前栏目列表（可视化增删改查）</span>
+            <button class="btn-mono" onclick="addNewCategoryItem()">+ 新增顶级栏目</button>
+          </div>
+          <div id="studio-categories-list" style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-secondary);">
+          <div style="display:grid; grid-template-columns:1fr 1fr 65px; gap:0.4rem; margin-bottom:0.45rem;">
+            <input type="text" class="input-mono" value="诗歌" placeholder="栏目名" onchange="updateCatField(0, 'name', this.value)">
+            <input type="text" class="input-mono" value="poetry" placeholder="slug" onchange="updateCatField(0, 'slug', this.value)">
+            <input type="number" class="input-mono" value="1" title="排序" onchange="updateCatField(0, 'order', Number(this.value))">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-bottom:0.45rem;">
+            <select class="input-mono" onchange="updateCatField(0, 'displayStyle', this.value)">
+              <option value="list">样式：普通编号列表</option>
+              <option value="card">样式：杂志卡片网格</option>
+              <option value="poetry" selected="">样式：诗歌首句列表</option>
+            </select>
+            <input type="text" class="input-mono" value="" placeholder="子栏目(逗号分隔)" onchange="updateCatChildren(0, this.value)">
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.74rem;">
+            <label style="display:flex; align-items:center; gap:0.3rem;">
+              <input type="checkbox" checked="" onchange="updateCatField(0, 'usePoetryLayout', this.checked)">
+              启用独立诗歌排版
+            </label>
+            <button class="btn-subtle" style="color:var(--accent-text);" onclick="deleteCategoryItem(0)">删除此栏目</button>
+          </div>
+        </div>
+      
+        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-secondary);">
+          <div style="display:grid; grid-template-columns:1fr 1fr 65px; gap:0.4rem; margin-bottom:0.45rem;">
+            <input type="text" class="input-mono" value="读书" placeholder="栏目名" onchange="updateCatField(1, 'name', this.value)">
+            <input type="text" class="input-mono" value="reading" placeholder="slug" onchange="updateCatField(1, 'slug', this.value)">
+            <input type="number" class="input-mono" value="2" title="排序" onchange="updateCatField(1, 'order', Number(this.value))">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-bottom:0.45rem;">
+            <select class="input-mono" onchange="updateCatField(1, 'displayStyle', this.value)">
+              <option value="list">样式：普通编号列表</option>
+              <option value="card" selected="">样式：杂志卡片网格</option>
+              <option value="poetry">样式：诗歌首句列表</option>
+            </select>
+            <input type="text" class="input-mono" value="文学细读, 科学史札记" placeholder="子栏目(逗号分隔)" onchange="updateCatChildren(1, this.value)">
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.74rem;">
+            <label style="display:flex; align-items:center; gap:0.3rem;">
+              <input type="checkbox" onchange="updateCatField(1, 'usePoetryLayout', this.checked)">
+              启用独立诗歌排版
+            </label>
+            <button class="btn-subtle" style="color:var(--accent-text);" onclick="deleteCategoryItem(1)">删除此栏目</button>
+          </div>
+        </div>
+      
+        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-secondary);">
+          <div style="display:grid; grid-template-columns:1fr 1fr 65px; gap:0.4rem; margin-bottom:0.45rem;">
+            <input type="text" class="input-mono" value="随笔" placeholder="栏目名" onchange="updateCatField(2, 'name', this.value)">
+            <input type="text" class="input-mono" value="essay" placeholder="slug" onchange="updateCatField(2, 'slug', this.value)">
+            <input type="number" class="input-mono" value="3" title="排序" onchange="updateCatField(2, 'order', Number(this.value))">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-bottom:0.45rem;">
+            <select class="input-mono" onchange="updateCatField(2, 'displayStyle', this.value)">
+              <option value="list" selected="">样式：普通编号列表</option>
+              <option value="card">样式：杂志卡片网格</option>
+              <option value="poetry">样式：诗歌首句列表</option>
+            </select>
+            <input type="text" class="input-mono" value="" placeholder="子栏目(逗号分隔)" onchange="updateCatChildren(2, this.value)">
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.74rem;">
+            <label style="display:flex; align-items:center; gap:0.3rem;">
+              <input type="checkbox" onchange="updateCatField(2, 'usePoetryLayout', this.checked)">
+              启用独立诗歌排版
+            </label>
+            <button class="btn-subtle" style="color:var(--accent-text);" onclick="deleteCategoryItem(2)">删除此栏目</button>
+          </div>
+        </div>
+      
+        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-secondary);">
+          <div style="display:grid; grid-template-columns:1fr 1fr 65px; gap:0.4rem; margin-bottom:0.45rem;">
+            <input type="text" class="input-mono" value="格物" placeholder="栏目名" onchange="updateCatField(3, 'name', this.value)">
+            <input type="text" class="input-mono" value="research" placeholder="slug" onchange="updateCatField(3, 'slug', this.value)">
+            <input type="number" class="input-mono" value="4" title="排序" onchange="updateCatField(3, 'order', Number(this.value))">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-bottom:0.45rem;">
+            <select class="input-mono" onchange="updateCatField(3, 'displayStyle', this.value)">
+              <option value="list" selected="">样式：普通编号列表</option>
+              <option value="card">样式：杂志卡片网格</option>
+              <option value="poetry">样式：诗歌首句列表</option>
+            </select>
+            <input type="text" class="input-mono" value="科研感悟, 科研技巧, 读博手记" placeholder="子栏目(逗号分隔)" onchange="updateCatChildren(3, this.value)">
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.74rem;">
+            <label style="display:flex; align-items:center; gap:0.3rem;">
+              <input type="checkbox" onchange="updateCatField(3, 'usePoetryLayout', this.checked)">
+              启用独立诗歌排版
+            </label>
+            <button class="btn-subtle" style="color:var(--accent-text);" onclick="deleteCategoryItem(3)">删除此栏目</button>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: 自定义背景（支持指定路径 /images/backgrounds/ 或上传） -->
+      <div class="studio-pane" id="pane-bg" style="display: none;">
+        <div class="control-group">
+          <div class="control-label"><span>1. 选择要设置背景的页面或栏目</span></div>
+          <select class="input-mono" id="bg-target-select" onchange="syncBgControlsForTarget(this.value)">
+        <option value="all">全局默认背景 (All)</option>
+        <option value="home">首页 (Home)</option>
+        <option value="poetry">栏目：诗歌 (poetry)</option><option value="reading">栏目：读书 (reading)</option><option value="essay">栏目：随笔 (essay)</option><option value="research">栏目：格物 (research)</option>
+      </select>
+          <div class="control-hint">提醒：若使用本地图片放入 <code>/images/backgrounds/</code>，建议单张图片控制在 300KB–500KB 以内（推荐 WebP/JPG），保证 GitHub Pages 秒开加载。</div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label"><span>2. 指定背景图路径 或 上传本地图片</span></div>
+          <input type="text" class="input-mono" id="bg-url-input" placeholder="例如：./images/backgrounds/darkroom.jpg" oninput="handleBgUrlChange(this.value)" style="margin-bottom:0.55rem;">
+          <input type="file" id="bg-file-input" accept="image/*" style="display:none" onchange="handleBgUpload(event)">
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn-mono" style="flex:1; justify-content:center;" onclick="document.getElementById('bg-file-input').click()">上传本地图片预览</button>
+            <button class="btn-mono" onclick="resetCurrentPageBg()">恢复默认</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label"><span>3. 内置简约纹理背景备选</span></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.45rem;">
+            <button class="btn-mono" onclick="applyBuiltinBg('none')">纯粹留白 (无图)</button>
+            <button class="btn-mono" onclick="applyBuiltinBg('paper')">手工宣纸纹理</button>
+            <button class="btn-mono" onclick="applyBuiltinBg('gradient')">灰度暗房柔光</button>
+            <button class="btn-mono" onclick="applyBuiltinBg('ink')">远山淡水墨</button>
+            <button class="btn-mono" onclick="applyBuiltinBg('grain')">细噪点胶片颗粒</button>
+            <button class="btn-mono" onclick="applyBuiltinBg('inherit')">跟随全局默认</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.7rem;">
+            <span style="font-size:0.8rem; font-weight:600;">背景图一键转为黑白</span>
+            <input type="checkbox" id="bg-grayscale-toggle" checked="" onchange="updateBgParam('grayscale', this.checked)" style="width:17px;height:17px;accent-color:var(--accent);">
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.4rem; margin-bottom:0.85rem;">
+            <button class="btn-mono" id="fit-cover" onclick="updateBgParam('fit', 'cover')">铺满 (Cover)</button>
+            <button class="btn-mono" id="fit-contain" onclick="updateBgParam('fit', 'contain')">居中 (Center)</button>
+            <button class="btn-mono" id="fit-repeat" onclick="updateBgParam('fit', 'repeat')">平铺 (Tile)</button>
+          </div>
+
+          <div class="control-label"><span>模糊度 (Blur)</span><span id="val-bg-blur">0 px</span></div>
+          <input type="range" id="slider-bg-blur" min="0" max="24" step="1" value="0" oninput="updateBgParam('blur', this.value)" style="width:100%; accent-color:var(--accent);">
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>遮罩深浅 (Mask)</span><span id="val-bg-mask">16 %</span></div>
+          <input type="range" id="slider-bg-mask" min="0" max="92" step="2" value="16" oninput="updateBgParam('maskOpacity', this.value)" style="width:100%; accent-color:var(--accent);">
+
+          <div class="control-label" style="margin-top:0.75rem;"><span>文字区半透明底板不透明度</span><span id="val-plate-opacity">90 %</span></div>
+          <input type="range" id="slider-plate-opacity" min="55" max="100" step="1" value="90" oninput="updatePlateOpacity(this.value)" style="width:100%; accent-color:var(--accent);">
+        </div>
+      </div>
+
+      <!-- Tab 4: Markdown 文章管理 -->
+      <div class="studio-pane" id="pane-write" style="display: none;">
+        <div class="control-group">
+          <div class="control-label"><span>导入本地 Markdown (`.md`) 文章</span></div>
+          <input type="file" id="md-file-input" accept=".md,.txt" multiple="" style="display:none" onchange="handleMdFileImport(event)">
+          <button class="btn-mono" style="width:100%; justify-content:center;" onclick="document.getElementById('md-file-input').click()">
+            + 批量导入本地 .md 文件
+          </button>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>新增 / 编辑 Markdown 文章</span>
+            <button class="btn-subtle" onclick="fillNewPostTemplate()">重置模板</button>
+          </div>
+          <textarea class="input-mono" id="md-editor-textarea" rows="12" style="font-family:var(--font-mono); font-size:0.76rem; line-height:1.55;"></textarea>
+          <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+            <button class="btn-mono" style="flex:1; justify-content:center;" onclick="saveMarkdownFromEditor()">保存并发布到文集</button>
+            <button class="btn-mono" onclick="downloadCurrentMd()">下载此 .md</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn-mono" style="width:100%; justify-content:center; padding:0.6rem; font-weight:600;" onclick="exportFullSiteHTML()">
+        ↓ 导出定稿网站 (index.html) 以推送至 GitHub Pages
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       模态窗 1：10 套撞色方案 × 明亮/深色双模式同屏对比画廊
+       ========================================================================== -->
+  <div class="modal-overlay" id="scheme-gallery-modal" onclick="if(event.target===this)closeModal('scheme-gallery-modal')">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <div style="font-family:var(--font-serif); font-weight:700; font-size:1.1rem;">寸铁集 · 撞色方案明暗双模式全览（点击任意卡片直接应用）</div>
+        <button class="btn-mono" onclick="closeModal('scheme-gallery-modal')">关闭 ×</button>
+      </div>
+      <div id="scheme-gallery-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:1rem;">
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('mono'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>黑白灰（默认纯净）</span>
+              <code style="font-size:0.72rem;">#1A1A1A</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #1A1A1A;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#1A1A1A; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #E8E8E8;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#E8E8E8; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('klein'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>克莱因蓝 (Klein Blue)</span>
+              <code style="font-size:0.72rem;">#002FA7</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #002FA7;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#002FA7; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #4D7CFE;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#4D7CFE; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('vermilion'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>朱砂橙红 (Vermilion)</span>
+              <code style="font-size:0.72rem;">#FF4D1F</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #FF4D1F;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#FF4D1F; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #FF5A30;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#FF5A30; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('acid'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>酸性黄绿 (Acid Lime)</span>
+              <code style="font-size:0.72rem;">#C8F135</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #C8F135;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#C8F135; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #C8F135;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#C8F135; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('crimson'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>暗玫红 (Dark Crimson)</span>
+              <code style="font-size:0.72rem;">#B0124A</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #B0124A;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#B0124A; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #E84A7F;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#E84A7F; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('ultramarine'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>电光群青 (Ultramarine)</span>
+              <code style="font-size:0.72rem;">#5B2EFF</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #5B2EFF;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#5B2EFF; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #8C6BFF;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#8C6BFF; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('emerald'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>冷松石绿 (Cold Emerald)</span>
+              <code style="font-size:0.72rem;">#007A5E</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #007A5E;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#007A5E; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #26C49E;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#26C49E; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('amber'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>工业琥珀 (Industrial Amber)</span>
+              <code style="font-size:0.72rem;">#D97706</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #D97706;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#D97706; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #FBBF24;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#FBBF24; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('violet'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>暮山紫 (Dusk Violet)</span>
+              <code style="font-size:0.72rem;">#6D28D9</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #6D28D9;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#6D28D9; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #A78BFA;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#A78BFA; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('cyan'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>冰川青 (Glacier Cyan)</span>
+              <code style="font-size:0.72rem;">#0E7490</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid #0E7490;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#0E7490; color:#FFFFFF; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid #22D3EE;">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:#22D3EE; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       模态窗 2：跟随当前配色的分享预览卡片 (Share Card)
+       ========================================================================== -->
+  <div class="modal-overlay" id="share-modal" onclick="if(event.target===this)closeModal('share-modal')">
+    <div class="modal-card" style="max-width:600px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <div style="font-family:var(--font-serif); font-weight:600; font-size:1.05rem;">分享预览卡片（自动跟随当前撞色方案）</div>
+        <button class="btn-mono" onclick="closeModal('share-modal')">关闭 ×</button>
+      </div>
+      <div id="share-card-stage" style="border:1.5px solid var(--text-primary); border-top:4px solid var(--accent); padding:2rem; background-color:var(--bg-primary); margin-bottom:1.2rem;">
+        <div style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.18em; color:var(--accent-text); margin-bottom:0.85rem;" id="share-card-kicker"></div>
+        <div style="font-family:var(--font-serif); font-size:1.45rem; font-weight:700; line-height:1.45; margin-bottom:0.9rem;" id="share-card-title"></div>
+        <div style="font-family:var(--font-serif); font-size:0.92rem; color:var(--text-secondary); line-height:1.85; margin-bottom:1.5rem;" id="share-card-excerpt"></div>
+        <div style="border-top:1px solid var(--border-color); padding-top:0.75rem; display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.74rem; color:var(--text-secondary);">
+          <span id="share-card-date"></span>
+          <span id="share-card-author"></span>
+        </div>
+      </div>
+      <div style="display:flex; gap:0.6rem; justify-content:flex-end;">
+        <button class="btn-mono" onclick="downloadShareCardPNG()">下载分享海报 (PNG)</button>
+        <button class="btn-mono" onclick="copyShareLink()" id="copy-share-link-btn">复制文章链接</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       模态窗 3：RSS 2.0 订阅源 & Sitemap 站点地图
+       ========================================================================== -->
+  <div class="modal-overlay" id="rss-modal" onclick="if(event.target===this)closeModal('rss-modal')">
+    <div class="modal-card" style="max-width:620px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+        <div style="font-family:var(--font-serif); font-weight:600;">RSS 2.0 订阅源 (feed.xml)</div>
+        <button class="btn-mono" onclick="closeModal('rss-modal')">关闭 ×</button>
+      </div>
+      <textarea class="input-mono" id="rss-xml-preview" rows="9" readonly="" style="font-family:var(--font-mono); font-size:0.74rem; margin-bottom:0.8rem;"></textarea>
+      <div style="display:flex; justify-content:flex-end;">
+        <button class="btn-mono" onclick="downloadXmlFile('feed.xml', buildRssXml())">下载 feed.xml</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="sitemap-modal" onclick="if(event.target===this)closeModal('sitemap-modal')">
+    <div class="modal-card" style="max-width:620px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+        <div style="font-family:var(--font-serif); font-weight:600;">自动生成站点地图 (sitemap.xml)</div>
+        <button class="btn-mono" onclick="closeModal('sitemap-modal')">关闭 ×</button>
+      </div>
+      <textarea class="input-mono" id="sitemap-xml-preview" rows="9" readonly="" style="font-family:var(--font-mono); font-size:0.74rem; margin-bottom:0.8rem;"></textarea>
+      <div style="display:flex; justify-content:flex-end;">
+        <button class="btn-mono" onclick="downloadXmlFile('sitemap.xml', buildSitemapXml())">下载 sitemap.xml</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       集中式站点配置文件 (SITE_CONFIG + MARKDOWN_POSTS)
+       本地修改此 JSON 区块并保存推送到 GitHub Pages，全站即刻自动更新
+       ========================================================================== -->
+  <script id="initial-site-data" type="application/json">
+{
+  "siteTitle": "寸铁集",
+  "siteAuthor": "惟光",
+  "verticalStamp": "致敬没有被听到的",
+  "avatarText": "惟",
+  "avatarImage": "",
+  "siteUrl": "https://weiguang.github.io",
+  "signature": "手握寸铁，于荒原与晶格之间刻下微光。记录吉光片羽的诗与随笔，也记录实验室里漫长的求索。",
+  "signatureSub": "CUNTIE COLLECTION · BY WEIGUANG · LITERATURE & RESEARCH",
+  "footerText": "© 2026 寸铁集 · 惟光",
+  "colorScheme": "klein",
+  "themeMode": "light",
+  "readingFont": "serif",
+  "fontSize": 17,
+  "lineHeight": 1.9,
+  "plateOpacity": 90,
+  "enableComments": true,
+  "giscusRepo": "",
+  "showDrafts": false,
+  "homeCategories": [
+    "all"
+  ],
+  "categories": [
+    {
+      "name": "诗歌",
+      "slug": "poetry",
+      "aliases": [
+        "诗歌",
+        "诗"
+      ],
+      "description": "完整保留每一次换行与呼吸的分节诗稿。",
+      "order": 1,
+      "showInNav": true,
+      "displayStyle": "poetry",
+      "usePoetryLayout": true,
+      "background": "ink",
+      "children": []
+    },
+    {
+      "name": "读书",
+      "slug": "reading",
+      "aliases": [
+        "感想",
+        "阅读"
+      ],
+      "description": "【现场新增栏目 · 卡片样式】书页边缘的铅笔批注与长夜阅读札记。",
+      "order": 2,
+      "showInNav": true,
+      "displayStyle": "card",
+      "usePoetryLayout": false,
+      "background": "paper",
+      "children": [
+        {
+          "name": "文学细读",
+          "slug": "lit",
+          "aliases": []
+        },
+        {
+          "name": "科学史札记",
+          "slug": "hist",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "随笔",
+      "slug": "essay",
+      "aliases": [],
+      "description": "日常景物、旧书页痕迹与独行时的吉光片羽。",
+      "order": 3,
+      "showInNav": true,
+      "displayStyle": "list",
+      "usePoetryLayout": false,
+      "background": "inherit",
+      "children": []
+    },
+    {
+      "name": "格物",
+      "slug": "research",
+      "aliases": [
+        "科研"
+      ],
+      "description": "【原『科研』改名演示】旧文章自动通过 aliases 映射归入此处，零死链。",
+      "order": 4,
+      "showInNav": true,
+      "displayStyle": "list",
+      "usePoetryLayout": false,
+      "background": "gradient",
+      "children": [
+        {
+          "name": "科研感悟",
+          "slug": "insights",
+          "aliases": [
+            "感悟"
+          ]
+        },
+        {
+          "name": "科研技巧",
+          "slug": "techniques",
+          "aliases": [
+            "技巧"
+          ]
+        },
+        {
+          "name": "读博手记",
+          "slug": "phd-log",
+          "aliases": []
+        }
+      ]
+    }
+  ],
+  "backgrounds": {
+    "all": {
+      "type": "builtin",
+      "value": "grain",
+      "grayscale": true,
+      "blur": 0,
+      "maskOpacity": 16,
+      "fit": "repeat"
+    },
+    "home": {
+      "type": "inherit",
+      "value": "",
+      "grayscale": true,
+      "blur": 0,
+      "maskOpacity": 16,
+      "fit": "cover"
+    },
+    "poetry": {
+      "type": "builtin",
+      "value": "ink",
+      "grayscale": true,
+      "blur": 0,
+      "maskOpacity": 20,
+      "fit": "cover"
+    },
+    "research": {
+      "type": "builtin",
+      "value": "gradient",
+      "grayscale": true,
+      "blur": 0,
+      "maskOpacity": 18,
+      "fit": "cover"
+    }
+  },
+  "markdownFiles": [
+    {
+      "filename": "2026-10-12-autumn-rain-and-old-pages.md",
+      "raw": "---\ntitle: 旧书页里的十月与慢钟\ndate: 2026-10-12\ncategory: 随笔\ntags: [秋日, 旧书, 热力学, 独处]\nfeatured: true\ndraft: false\nsummary: 十月的雨总是先落在北侧的苦楝树上，再沿着铅灰色的窗框漫进阅览室。翻开四十年前的旧印本，纸页间的纤维与停顿的钟摆声让人重新辨认时间的刻度。\n---\n\n十月的雨总是先落在图书馆北侧的苦楝树上，再沿着铅灰色的窗框漫进阅览室。午后三点，整座旧楼里只有翻动书页的轻响，以及走廊尽头那座老式落地钟迟缓的摆动。\n\n我偏爱借阅那些出版于上世纪七八十年代的铅印本。那时的纸张大多略带粗糙的棉浆质感，历经数十年的氧化，呈现出一种温和的浅灰与米白交织的色调。字口因为铅字压印而有极轻微的凹陷，指尖抚过时，能感到文字并非悬浮在屏幕上的光斑，而是真实嵌进纤维里的刻痕。\n\n## 纸页边缘的陌生人与对话\n\n在一册一九八二年印行的《统计热力学札记》第 114 页边缘，前人用极细的 HB 铅笔写下一行小字：\n\n> 「此处对熵增与不可逆性的诠释似过于悲观。局部之有序，恰赖于边界之外的耗散；人之思想亦如是。」\n\n字迹清癯，顿笔克制。四十四年过去，写下这行字的人或许早已退休。但在这个阴云低垂的十月下午，这行铅笔灰痕却越过漫长的岁月，与另一个同样在此停顿的读者目光相接。\n\n## 慢下来的灰阶世界\n\n傍晚离开图书馆时，雨已经停了。石板路上积着浅浅的水洼，将天空中层叠的铅云与光秃的枝桠倒映成一幅高反差的黑白银盐相片。删去华而不实的修饰，留下最准确的那几个词，便足够支撑起一个安静的夜晚。"
+    },
+    {
+      "filename": "2026-10-08-measuring-snow-at-night.md",
+      "raw": "---\ntitle: 在冬夜测量雪的重量\ndate: 2026-10-08\ncategory: 诗\ntags: [现代诗, 冬夜, 寂静, 测量]\nalign: center\npoemFirstLine: 玻璃窗结出第一层薄霜时，我们停止了交谈\ndraft: false\n---\n玻璃窗结出第一层薄霜时，我们停止了交谈\n台灯收回昏黄的半径\n只把桌角那枚旧黄铜砝码\n照成一块沉默的灰铁\n\n雪是从子夜的缝隙里落下来的\n没有借用风的修辞\n一片，叠着另一片\n像无数封没有署名的电报\n在松针与石阶上校对空白\n\n如果把整座山谷的寂静放在天平左盘\n右盘只需放上一根熄灭的火柴\n黎明之前，所有的道路都已归零\n唯有屋檐下悬着的冰棱\n替漫长的黑夜，保留着垂直的刻度"
+    },
+    {
+      "filename": "2026-10-03-slow-science-reflection.md",
+      "raw": "---\ntitle: 慢科研：在追逐指标的时代保留一点问题意识\ndate: 2026-10-03\ncategory: 科研/科研感悟\ntags: [科研方法, 学术反思, 基础研究, 慢科研]\nbadges: [栏目：科研感悟, 适合：研究生 · 青年学者]\ndraft: false\nsummary: 当发表周期与量化指标成为衡量学术工作的唯一标尺，我们往往容易把「高频产出」误认为「深度推进」。回看科学史上真正具有生命力的工作，往往始于对一个笨问题的长久凝视。\n---\n\n过去几年里，组会与学术讨论的语境发生了一种微妙的变化。人们越来越少追问「这个现象背后的物理化学或数学本质是什么」，而越来越熟练地讨论「这个改动在基准测试上能提升几个百分点」「能否赶上下个月的截稿日期」。\n\n诚然，清晰的量化指标推动了技术迭代；但当这种节奏完全统治基础研究时，一种隐蔽的焦虑便随之蔓延——我们似乎不敢再在同一个没有把握的问题上停留超过三个月。\n\n## 「好问题」往往长在热闹之外\n\n科学史家托马斯·库恩（Thomas Kuhn）在讨论常规科学时曾指出，绝大多数研究是在既有范式的框架内做精密的「解谜」工作。然而，真正令研究者内心产生持久震颤的时刻，往往不是把数字从 $92.4\\%$ 刷到 $93.1\\%$，而是忽然意识到：**我们习以为常的某个基本假设，在边界条件下其实并不成立。**\n\n> 「提出一个真正关键的问题，往往比用精巧的技巧解决一个平庸的问题更需要勇气。因为前者意味着你可能在很长一段时间里两手空空。」\n\n## 善待实验记录本里的「反常残差」\n\n如果回看那些最终得以留存的工作，几乎每一篇的核心洞见，都直接脱胎于此前某次「失败实验」中暴露出的反常残差：\n\n1. **记录反常，而非掩盖反常**：当实验曲线偏离理论预期时，第一反应不应是抹平它，而是追问偏离的量级是否蕴含未被建模的相变或界面机制。\n2. **区分「参数调优」与「机制增益」**：如果一个体系必须依赖极其脆弱的外部条件才能复现，它大概率还没有触及热力学或动力学本质。\n3. **给自己保留 20% 的「非功利阅读时间」**：每周留出一个下午，去读那些发表于二三十年前的奠基性长文与经典专著。"
+    },
+    {
+      "filename": "2026-09-26-reproducible-computational-experiments.md",
+      "raw": "---\ntitle: 计算与理论推导的可复现性清单：从配分函数到数值稳定性\ndate: 2026-09-26\ncategory: 科研/科研技巧\ntags: [可复现性, 统计热力学, Python, LaTeX, 数值计算]\nbadges: [适用场景：计算化学 · 数值模拟, 难度：进阶 · Intermediate]\ndraft: false\nsummary: 为什么同一套理论模型在不同数值精度或采样步长下会给出截然不同的收敛行为？本文梳理计算研究中的病态条件数、Log-Sum-Exp 配分函数防溢出技巧与确定性代码规范。\n---\n\n在计算材料与物理化学研究中，「脚本可运行」与「结论可复现（Reproducible）」之间横亘着巨大的鸿沟[1]。本文整理了一套可直接用于日常科研计算的数值稳定性与实验核查清单。\n\n## 一、病态矩阵条件数与配分函数数值防溢\n\n在求解线性响应方程 $Ax = b$ 时，当右端项存在微小涨落 $\\delta b$，解的相对误差上界由矩阵条件数 $\\kappa(A)$ 决定：\n\n$$\\frac{\\|\\delta x\\|}{\\|x\\|} \\le \\kappa(A) \\frac{\\|\\delta b\\|}{\\|b\\|}, \\quad \\kappa(A) = \\frac{\\sigma_{\\max}(A)}{\\sigma_{\\min}(A)}$$\n\n同理，在统计热力学中计算正则系综配分函数 $Z = \\sum_i \\exp(-\\beta E_i)$ 与自由能 $F = -k_B T \\ln Z$ 时，直接对玻尔兹曼因子求和极易引发浮点下溢或上溢[2]。标准做法是引入参考基态能量 $E_{\\min} = \\min_i E_i$ 进行 **Log-Sum-Exp** 恒等平移：\n\n$$\\ln Z = -\\beta E_{\\min} + \\ln \\sum_{i=1}^{N} \\exp\\left[-\\beta (E_i - E_{\\min})\\right]$$\n\n在误差报告中，应至少独立运行 $n \\ge 5$ 组不同初始构型或随机种子，并报告无偏样本标准差 $s$：\n\n$$s = \\sqrt{\\frac{1}{n - 1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2}$$\n\n## 二、数值稳定配分函数与确定性控制代码\n\n下方给出了锁定全局随机源以及利用恒等平移计算自由能与玻尔兹曼分布权重的标准 Python 实现：\n\n```python\nimport os\nimport random\nimport numpy as np\n\ndef lock_deterministic_env(seed: int = 42) -> dict:\n    \"\"\"锁定计算实验全局随机种子与哈希环境\"\"\"\n    os.environ[\"PYTHONHASHSEED\"] = str(seed)\n    random.seed(seed)\n    np.random.seed(seed)\n    return {\"seed\": seed, \"status\": \"locked\"}\n\ndef stable_boltzmann_weights(energies: np.ndarray, beta: float) -> tuple:\n    \"\"\"数值稳定的正则系综配分函数对数 ln(Z) 与态居数分布计算\"\"\"\n    e_min = np.min(energies)\n    shifted = -beta * (energies - e_min)\n    ln_z_shifted = np.log(np.sum(np.exp(shifted)))\n    ln_z = -beta * e_min + ln_z_shifted\n     probabilities = np.exp(shifted - ln_z_shifted)\n    return ln_z, probabilities\n```\n\n## 三、不同浮点精度下的残差收敛对比\n\n在条件数 $\\kappa(A) = 10^5$ 的基准算例上，三种浮点精度的收敛表现对比如下：\n\n| 浮点格式 | 尾数位宽 (Mantissa) | 相对机器精度 $\\epsilon_{\\mathrm{mach}}$ | 1000步迭代相对残差 | 单步平均耗时 (ms) |\n| :--- | :--- | :--- | :--- | :--- |\n| FP64 (双精度) | 52 bits | $2.22 \\times 10^{-16}$ | $1.42 \\times 10^{-11}$ | 4.85 |\n| FP32 (单精度) | 23 bits | $1.19 \\times 10^{-7}$ | $3.18 \\times 10^{-3}$ | 1.92 |\n| BF16 (低位宽) | 7 bits | $7.81 \\times 10^{-3}$ | $4.60 \\times 10^{-1}$ (停滞) | 0.94 |\n\n![不同浮点精度与条件数下的迭代残差收敛曲线](builtin:convergence-svg \"图 1：在病态线性系统（条件数 κ = 10^5）中，FP64 保持稳定线性收敛，而低精度格式在达到舍入误差底噪后出现停滞。\")\n\n[^1]: Claerbout, J. F., & Karrenbach, M. (1992). Electronic documents give reproducible research a new meaning. *SEG Technical Program Expanded Abstracts*, 601-604.\n[^2]: Higham, N. J. (2002). *Accuracy and Stability of Numerical Algorithms* (2nd ed.). SIAM.\n\n[ref] Frenkel, D., & Smit, B. (2001). *Understanding Molecular Simulation: From Algorithms to Applications*. Academic Press."
+    },
+    {
+      "filename": "2026-09-18-honesty-of-spectator.md",
+      "raw": "---\ntitle: 旁观者的诚实：读《窄门》与笔记本边缘的批注\ndate: 2026-09-18\ncategory: 感想\ntags: [阅读, 纪德, 笔记, 内省]\ndraft: false\nsummary: 重读纪德的《窄门》，发觉年轻时容易被那种近乎苦行的自我牺牲所打动，而今却更留心书信与日记体叙事背后那种近乎冷酷的自我审视。\n---\n\n夜里整理书架，翻出旧版《窄门》。扉页上写着当时的购书日期，内页里却很少划线，只在阿莉莎日记的末几页折了一个极小的角。\n\n年轻时读这部小说，总容易把目光停留在杰罗姆与阿莉莎之间克制而哀婉的书信往来上。隔了数年再读，却在字里行间读出一丝令人凛然的寒意——阿莉莎所追求的「窄门」，究竟是通向神圣的圆满，还是人在面对真实亲密关系时，用崇高感修筑的一座防御工事？\n\n> 「我常常觉得，我们所热爱的并不是彼此，而是借由彼此在心中投射出的那个更高尚的影子。」\n\n要在纸面上保持绝对的诚实，比写出优美的句子难得多——它要求我们在落笔的瞬间，识破自己想要讨好读者的那一点虚荣。"
+    },
+    {
+      "filename": "2026-10-14-draft-phase-equilibrium-notes.md",
+      "raw": "---\ntitle: 多组分非理想溶液相平衡与化学势笔记（草稿）\ndate: 2026-10-14\ncategory: 科研/科研技巧\ntags: [化学热力学, 相律, 化学势, 草稿]\nbadges: [适用场景：物理化学推导, 状态：草稿]\ndraft: true\nsummary: （这是一篇未发布的草稿示例，仅在作者隐藏工作台开启「显示未发布草稿」时可见，公开网站自动隐藏。）\n---\n\n在等温等压条件下，多相多元系达到相平衡的判据为各组分在各相中的化学势相等：\n\n$$\\mu_i^{\\alpha} = \\mu_i^{\\beta} = \\dots = \\mu_i^{P} \\quad (i = 1, 2, \\dots, C)$$\n\n由此可直接导出吉布斯相律 $f = C - P + 2$。"
+    }
+  ]
+}
+</script>
+
+  <!-- ==========================================================================
+       核心前端逻辑：动态多级栏目路由、防死链映射、本地全文索引、4连击隐藏工作台
+       ========================================================================== -->
+  <script>
+    const SITE_STORAGE_KEY = "cuntie_author_site_data_v1";
+    const VISITOR_PREF_KEY = "cuntie_visitor_prefs_v1";
+
+    let SITE_DATA = null;
+    let INITIAL_CATEGORIES_BACKUP = null;
+    let CURRENT_ROUTE = { view: "home", param: null, subcat: "all" };
+    let POEM_ALIGN_OVERRIDE = null;
+    let CURRENT_SHARE_POST = null;
+    let SEARCH_INDEX = [];
+
+    // 版权文字连续点击 4 次计数器
+    let secretClickCount = 0;
+    let secretClickTimer = null;
+
+    // 10 套撞色方案元数据
+    const COLOR_SCHEMES = [
+      { id: "mono", name: "黑白灰（默认纯净）", light: "#1A1A1A", dark: "#E8E8E8" },
+      { id: "klein", name: "克莱因蓝 (Klein Blue)", light: "#002FA7", dark: "#4D7CFE" },
+      { id: "vermilion", name: "朱砂橙红 (Vermilion)", light: "#FF4D1F", dark: "#FF5A30" },
+      { id: "acid", name: "酸性黄绿 (Acid Lime)", light: "#C8F135", dark: "#C8F135" },
+      { id: "crimson", name: "暗玫红 (Dark Crimson)", light: "#B0124A", dark: "#E84A7F" },
+      { id: "ultramarine", name: "电光群青 (Ultramarine)", light: "#5B2EFF", dark: "#8C6BFF" },
+      { id: "emerald", name: "冷松石绿 (Cold Emerald)", light: "#007A5E", dark: "#26C49E" },
+      { id: "amber", name: "工业琥珀 (Industrial Amber)", light: "#D97706", dark: "#FBBF24" },
+      { id: "violet", name: "暮山紫 (Dusk Violet)", light: "#6D28D9", dark: "#A78BFA" },
+      { id: "cyan", name: "冰川青 (Glacier Cyan)", light: "#0E7490", dark: "#22D3EE" }
+    ];
+
+    // 内置简约黑白灰背景纹理 (SVG Data URI)
+    const BUILTIN_BACKGROUNDS = {
+      none: "",
+      paper: `data:image/svg+xml;utf8,` + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+          <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" seed="12" result="noise"/>
+          <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.3" result="light"><feDistantLight azimuth="45" elevation="62"/></feDiffuseLighting>
+          <feColorMatrix type="saturate" values="0"/></filter>
+          <rect width="320" height="320" filter="url(#n)" opacity="0.52"/>
+        </svg>`),
+      gradient: `data:image/svg+xml;utf8,` + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" preserveAspectRatio="none">
+          <defs><radialGradient id="g1" cx="20%" cy="18%" r="75%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="60%" stop-color="#d8d8d8" stop-opacity="0.5"/><stop offset="100%" stop-color="#9e9e9e" stop-opacity="0.3"/></radialGradient></defs>
+          <rect width="1200" height="800" fill="#e8e8e8"/><rect width="1200" height="800" fill="url(#g1)"/>
+        </svg>`),
+      ink: `data:image/svg+xml;utf8,` + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <defs><filter id="b"><feGaussianBlur stdDeviation="8"/></filter></defs>
+          <rect width="1440" height="900" fill="#f2f2f2"/>
+          <path d="M0,580 Q280,450 560,520 T1100,470 T1440,530 L1440,900 L0,900 Z" fill="#999999" fill-opacity="0.22" filter="url(#b)"/>
+          <path d="M0,690 Q420,560 820,640 T1440,590 L1440,900 L0,900 Z" fill="#666666" fill-opacity="0.18" filter="url(#b)"/>
+        </svg>`),
+      grain: `data:image/svg+xml;utf8,` + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+          <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer></filter>
+          <rect width="400" height="400" filter="url(#g)"/>
+        </svg>`)
+    };
+
+    const CONVERGENCE_SVG = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 260" width="580" height="240" style="font-family: monospace;">
+        <g stroke="#CCCCCC" stroke-width="0.8" stroke-dasharray="3,3">
+          <line x1="70" y1="40" x2="580" y2="40"/><line x1="70" y1="90" x2="580" y2="90"/>
+          <line x1="70" y1="140" x2="580" y2="140"/><line x1="70" y1="190" x2="580" y2="190"/>
+        </g>
+        <line x1="70" y1="215" x2="585" y2="215" stroke="#1A1A1A" stroke-width="1.5"/>
+        <line x1="70" y1="25" x2="70" y2="215" stroke="#1A1A1A" stroke-width="1.5"/>
+        <g fill="#6B6B6B" font-size="11" text-anchor="end">
+          <text x="62" y="44">10⁰</text><text x="62" y="94">10⁻⁴</text><text x="62" y="144">10⁻⁸</text><text x="62" y="194">10⁻¹²</text>
+        </g>
+        <g fill="#6B6B6B" font-size="11" text-anchor="middle">
+          <text x="70" y="234">0</text><text x="240" y="234">350</text><text x="410" y="234">700</text><text x="570" y="234">1000 (Steps)</text>
+        </g>
+        <path d="M70,42 Q120,62 170,66 L310,68 L470,67 L575,65" fill="none" stroke="#8C8C8C" stroke-width="2" stroke-dasharray="6,4"/>
+        <path d="M70,42 Q160,92 250,104 L460,104 L575,105" fill="none" stroke="#4D4D4D" stroke-width="2" stroke-dasharray="2,3"/>
+        <path d="M70,42 L190,82 L320,126 L450,168 L575,202" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+        <rect x="405" y="32" width="165" height="64" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1"/>
+        <line x1="415" y1="48" x2="445" y2="48" stroke="#1A1A1A" stroke-width="2.2"/><text x="453" y="52" fill="#1A1A1A" font-size="11">FP64 (双精度)</text>
+        <line x1="415" y1="66" x2="445" y2="66" stroke="#4D4D4D" stroke-width="2" stroke-dasharray="2,3"/><text x="453" y="70" fill="#4D4D4D" font-size="11">FP32 (单精度)</text>
+        <line x1="415" y1="84" x2="445" y2="84" stroke="#8C8C8C" stroke-width="2" stroke-dasharray="6,4"/><text x="453" y="88" fill="#6B6B6B" font-size="11">BF16 (低位宽)</text>
+      </svg>`;
+
+    // 1. 初始化加载
+    function initSite() {
+      const embeddedRaw = document.getElementById("initial-site-data").textContent;
+      const embeddedData = JSON.parse(embeddedRaw);
+      INITIAL_CATEGORIES_BACKUP = JSON.parse(JSON.stringify(embeddedData.categories));
+
+      try {
+        const cached = localStorage.getItem(SITE_STORAGE_KEY);
+        SITE_DATA = cached ? Object.assign({}, embeddedData, JSON.parse(cached)) : embeddedData;
+      } catch (e) {
+        SITE_DATA = embeddedData;
+      }
+
+      // 监听系统明暗切换
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+        applyAllVisualSettings();
+      });
+
+      // 点击空白处收起访客阅读浮层
+      document.addEventListener("click", () => {
+        const pop = document.getElementById("visitor-reading-popover");
+        if (pop) pop.classList.remove("open");
+      });
+
+      // 隐藏工作台快捷键 Ctrl/Cmd + Shift + E
+      document.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "e") {
+          e.preventDefault();
+          openStudio("site");
+        }
+      });
+
+      window.addEventListener("hashchange", handleHashRoute);
+
+      buildLocalSearchIndex();
+      renderVisitorColorDots();
+      renderSchemeGalleryModal();
+      applyAllVisualSettings();
+      syncStudioInputs();
+      fillNewPostTemplate();
+
+      if (window.location.hash && window.location.hash.length > 1) {
+        handleHashRoute();
+      } else {
+        navigateTo("home");
+      }
+    }
+
+    // 连续点击页脚版权文字 4 次唤醒作者工作台
+    function handleCopyrightSecretClick() {
+      secretClickCount++;
+      if (secretClickTimer) clearTimeout(secretClickTimer);
+      if (secretClickCount >= 4) {
+        secretClickCount = 0;
+        openStudio("site");
+        return;
+      }
+      secretClickTimer = setTimeout(() => {
+        secretClickCount = 0;
+      }, 1400);
+    }
+
+    function saveSiteData() {
+      try {
+        localStorage.setItem(SITE_STORAGE_KEY, JSON.stringify(SITE_DATA));
+      } catch (e) {}
+      buildLocalSearchIndex();
+    }
+
+    // 2. 动态栏目解析与防死链分类映射器
+    function getSortedCategories() {
+      return [...(SITE_DATA.categories || [])].sort((a, b) => (a.order || 99) - (b.order || 99));
+    }
+
+    function resolvePostCategory(rawCategoryStr) {
+      const parts = (rawCategoryStr || "未分类").split("/").map(s => s.trim()).filter(Boolean);
+      const topToken = parts[0] || "未分类";
+      const subToken = parts[1] || "";
+
+      const cats = getSortedCategories();
+      for (const cat of cats) {
+        const matchTop = cat.name === topToken || cat.slug === topToken || (cat.aliases || []).includes(topToken);
+        if (matchTop) {
+          let resolvedSub = null;
+          if (subToken && cat.children && cat.children.length > 0) {
+            resolvedSub = cat.children.find(c => c.name === subToken || c.slug === subToken || (c.aliases || []).includes(subToken));
+          }
+          return {
+            parentCat: cat,
+            subCat: resolvedSub,
+            parentName: cat.name,
+            parentSlug: cat.slug,
+            subName: resolvedSub ? resolvedSub.name : subToken,
+            subSlug: resolvedSub ? resolvedSub.slug : subToken,
+            isUncategorized: false
+          };
+        }
+        // 检查是否直接写了子栏目名
+        if (cat.children && cat.children.length > 0) {
+          const childMatch = cat.children.find(c => c.name === topToken || c.slug === topToken || (c.aliases || []).includes(topToken));
+          if (childMatch) {
+            return {
+              parentCat: cat,
+              subCat: childMatch,
+              parentName: cat.name,
+              parentSlug: cat.slug,
+              subName: childMatch.name,
+              subSlug: childMatch.slug,
+              isUncategorized: false
+            };
+          }
+        }
+      }
+
+      // 若栏目已被删除且无别名匹配，自动优雅归入「未分类」，杜绝死链
+      return {
+        parentCat: { name: "未分类", slug: "uncategorized", displayStyle: "list", usePoetryLayout: false },
+        subCat: null,
+        parentName: "未分类",
+        parentSlug: "uncategorized",
+        subName: topToken !== "未分类" ? `原:${topToken}` : "",
+        subSlug: "",
+        isUncategorized: true
+      };
+    }
+
+    // 3. 解析 Markdown 与构建本地全文搜索索引
+    function parseMarkdownFile(fileObj) {
+      const raw = (fileObj.raw || "").replace(/\r\n/g, "\n");
+      const slug = fileObj.filename.replace(/\.md$/i, "").replace(/^\d{4}-\d{2}-\d{2}-/, "");
+      let meta = {
+        title: "无题",
+        date: "2026-10-14",
+        category: "随笔",
+        tags: [],
+        badges: [],
+        poetryLayout: null,
+        align: "center",
+        poemFirstLine: "",
+        featured: false,
+        draft: false,
+        summary: ""
+      };
+      let body = raw;
+
+      const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      if (fmMatch) {
+        const fmLines = fmMatch[1].split("\n");
+        body = fmMatch[2].trim();
+        fmLines.forEach(line => {
+          const idx = line.indexOf(":");
+          if (idx === -1) return;
+          const key = line.slice(0, idx).trim();
+          let val = line.slice(idx + 1).trim();
+          if (val.startsWith("[") && val.endsWith("]")) {
+            meta[key] = val.slice(1, -1).split(",").map(s => s.trim().replace(/^['"]|['"]$/g, "")).filter(Boolean);
+          } else if (val === "true" || val === "false") {
+            meta[key] = val === "true";
+          } else if (val !== "") {
+            meta[key] = val.replace(/^['"]|['"]$/g, "");
+          }
+        });
+      }
+
+      const resolvedCat = resolvePostCategory(meta.category);
+      const isPoetry = meta.poetryLayout === true || (meta.poetryLayout === null && resolvedCat.parentCat.usePoetryLayout);
+
+      if (isPoetry && !meta.poemFirstLine) {
+        meta.poemFirstLine = body.split("\n").map(l => l.trim()).find(Boolean) || "";
+      }
+
+      if (!isPoetry && !meta.summary) {
+        const plain = body
+          .replace(/```[\s\S]*?```/g, "")
+          .replace(/\$\$[\s\S]*?\$\$/g, "")
+          .replace(/^#+\s+.*$/gm, "")
+          .replace(/[>*_`~]/g, "")
+          .trim();
+        meta.summary = plain.slice(0, 110) + (plain.length > 110 ? "……" : "");
+      }
+
+      return {
+        slug,
+        filename: fileObj.filename,
+        raw: fileObj.raw,
+        ...meta,
+        resolvedCat,
+        isPoetry,
+        body
+      };
+    }
+
+    function getAllPosts(includeDrafts = SITE_DATA.showDrafts) {
+      return (SITE_DATA.markdownFiles || [])
+        .map(parseMarkdownFile)
+        .filter(p => includeDrafts || !p.draft)
+        .sort((a, b) => (a.date < b.date ? 1 : -1));
+    }
+
+    function buildLocalSearchIndex() {
+      const posts = getAllPosts(false);
+      SEARCH_INDEX = posts.map(p => ({
+        slug: p.slug,
+        title: p.title,
+        date: p.date,
+        categoryLabel: p.resolvedCat.subName ? `${p.resolvedCat.parentName} / ${p.resolvedCat.subName}` : p.resolvedCat.parentName,
+        tags: p.tags || [],
+        isPoetry: p.isPoetry,
+        poemFirstLine: p.poemFirstLine,
+        summary: p.summary,
+        searchText: `${p.title} ${p.resolvedCat.parentName} ${p.resolvedCat.subName} ${(p.tags || []).join(" ")} ${p.body}`.toLowerCase()
+      }));
+    }
+
+    // 4. 顶栏导航动态生成（支持自动折叠「更多 ▾」与手机端抽屉）
+    function renderNavigation() {
+      const navDesktop = document.getElementById("nav-desktop");
+      const mobileList = document.getElementById("mobile-nav-list");
+      const allCats = getSortedCategories().filter(c => c.showInNav !== false);
+
+      // 检查是否有归入「未分类」的文章，若有则自动显示「未分类」导航项防止死链
+      const hasUncategorized = getAllPosts().some(p => p.resolvedCat.isUncategorized);
+      if (hasUncategorized) {
+        allCats.push({ name: "未分类", slug: "uncategorized" });
+      }
+
+      const maxVisible = 5;
+      const visibleCats = allCats.slice(0, maxVisible);
+      const overflowCats = allCats.slice(maxVisible);
+
+      let desktopHtml = `<a class="nav-link ${CURRENT_ROUTE.view === 'home' ? 'active' : ''}" onclick="navigateTo('home')">首页</a>`;
+      visibleCats.forEach(c => {
+        const isActive = CURRENT_ROUTE.view === "category" && CURRENT_ROUTE.param === c.slug;
+        desktopHtml += `<a class="nav-link ${isActive ? 'active' : ''}" onclick="navigateTo('category', '${c.slug}')">${c.name}</a>`;
+      });
+
+      if (overflowCats.length > 0) {
+        const anyOverflowActive = overflowCats.some(c => CURRENT_ROUTE.view === "category" && CURRENT_ROUTE.param === c.slug);
+        desktopHtml += `
+          <div class="nav-more-wrap">
+            <a class="nav-link ${anyOverflowActive ? 'active' : ''}">更多 ▾</a>
+            <div class="nav-more-dropdown">
+              ${overflowCats.map(c => `
+                <a class="nav-more-item ${CURRENT_ROUTE.view === 'category' && CURRENT_ROUTE.param === c.slug ? 'active' : ''}" onclick="navigateTo('category', '${c.slug}')">${c.name}</a>
+              `).join("")}
+              <a class="nav-more-item ${CURRENT_ROUTE.view === 'archive' ? 'active' : ''}" onclick="navigateTo('archive')">年月归档</a>
+              <a class="nav-more-item ${CURRENT_ROUTE.view === 'tags' ? 'active' : ''}" onclick="navigateTo('tags')">标签索引</a>
+            </div>
+          </div>
+        `;
+      } else {
+        desktopHtml += `<a class="nav-link ${CURRENT_ROUTE.view === 'archive' ? 'active' : ''}" onclick="navigateTo('archive')">归档</a>`;
+        desktopHtml += `<a class="nav-link ${CURRENT_ROUTE.view === 'tags' ? 'active' : ''}" onclick="navigateTo('tags')">标签</a>`;
+      }
+
+      navDesktop.innerHTML = desktopHtml;
+
+      // 移动端抽屉列表
+      mobileList.innerHTML = `
+        <a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('home')">首页</a>
+        ${allCats.map(c => `<a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('category', '${c.slug}')">${c.name}</a>`).join("")}
+        <a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('archive')">年月归档</a>
+        <a class="nav-link" onclick="toggleMobileMenu(false); navigateTo('tags')">标签索引</a>
+      `;
+    }
+
+    function toggleMobileMenu(open) {
+      document.getElementById("mobile-nav-drawer").classList.toggle("open", open);
+    }
+
+    // 5. 路由与视图渲染
+    function handleHashRoute() {
+      const hash = decodeURIComponent(window.location.hash.slice(1));
+      if (hash === "studio") {
+        openStudio("site");
+        return;
+      }
+      if (hash.startsWith("post/")) {
+        navigateTo("post", hash.slice(5), "all", false);
+      } else if (hash.startsWith("category/")) {
+        const parts = hash.slice(9).split("/");
+        navigateTo("category", parts[0], parts[1] || "all", false);
+      } else if (["home", "archive", "tags", "search"].includes(hash)) {
+        navigateTo(hash, null, "all", false);
+      }
+    }
+
+    function navigateTo(view, param = null, subcat = "all", updateHash = true) {
+      CURRENT_ROUTE = { view, param, subcat };
+      if (view !== "post") POEM_ALIGN_OVERRIDE = null;
+
+      if (updateHash) {
+        let newHash = `#${view}`;
+        if (view === "post") newHash = `#post/${param}`;
+        if (view === "category") newHash = subcat !== "all" ? `#category/${param}/${subcat}` : `#category/${param}`;
+        if (window.location.hash !== newHash) {
+          history.pushState(null, "", newHash);
+        }
+      }
+
+      renderNavigation();
+      applyBackgroundForCurrentPage();
+      renderCurrentView();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderCurrentView() {
+      const container = document.getElementById("app-view");
+      const header = document.getElementById("site-header");
+      const footer = document.getElementById("site-footer");
+      const plate = document.getElementById("reading-plate");
+
+      container.classList.remove("fade-view");
+      void container.offsetWidth;
+      container.classList.add("fade-view");
+
+      header.style.display = "flex";
+      footer.style.display = "flex";
+      plate.classList.remove("has-toc-layout");
+
+      const posts = getAllPosts();
+
+      if (CURRENT_ROUTE.view === "home") {
+        renderHomeView(container, posts);
+      } else if (CURRENT_ROUTE.view === "category") {
+        renderCategoryView(container, posts, CURRENT_ROUTE.param, CURRENT_ROUTE.subcat);
+      } else if (CURRENT_ROUTE.view === "archive") {
+        renderArchiveView(container, posts);
+      } else if (CURRENT_ROUTE.view === "tags") {
+        renderTagsView(container, posts, CURRENT_ROUTE.param);
+      } else if (CURRENT_ROUTE.view === "search") {
+        renderSearchView(container, CURRENT_ROUTE.param || "");
+      } else if (CURRENT_ROUTE.view === "post") {
+        const post = getAllPosts(true).find(p => p.slug === CURRENT_ROUTE.param);
+        if (!post) {
+          container.innerHTML = `<p style="padding:2rem 0;">该文章不存在或已迁移，<a class="link-underline" onclick="navigateTo('home')">返回寸铁集首页</a>。</p>`;
+          return;
+        }
+        if (post.isPoetry) {
+          header.style.display = "none";
+          footer.style.display = "none";
+          renderPoetryDedicatedView(container, post);
+        } else {
+          renderArticleView(container, post, plate);
+        }
+      }
+    }
+
+    // 列表项渲染（支持编号列表、杂志卡片、诗歌首句三种模式）
+    function renderPostListCollection(posts, displayStyle = "list") {
+      if (posts.length === 0) {
+        return `<p style="color:var(--text-secondary); padding:1.5rem 0;">当前栏目暂无文章。</p>`;
+      }
+
+      if (displayStyle === "card") {
+        return `
+          <ul class="post-card-grid">
+            ${posts.map((p, idx) => {
+              const catLabel = p.resolvedCat.subName ? `${p.resolvedCat.parentName} · ${p.resolvedCat.subName}` : p.resolvedCat.parentName;
+              const numStr = String(idx + 1).padStart(2, "0");
+              return `
+                <li class="post-card-item">
+                  <div>
+                    <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.74rem; color:var(--text-secondary); margin-bottom:0.65rem;">
+                      <span style="color:var(--accent-text); font-weight:700;">/${numStr}</span>
+                      <span>${p.date} · ${catLabel}</span>
+                    </div>
+                    <h3 style="font-family:var(--font-serif); font-size:1.16rem; font-weight:600; margin-bottom:0.65rem; line-height:1.45;">
+                      <a class="link-underline" onclick="navigateTo('post', '${p.slug}')">${p.title}</a>
+                    </h3>
+                    <p class="post-item-summary" style="margin-bottom:1rem;">${p.isPoetry ? `「${p.poemFirstLine}」` : p.summary}</p>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; padding-top:0.75rem; border-top:1px dashed var(--border-color); font-size:0.75rem;">
+                    <span>${(p.tags || []).slice(0, 2).map(t => `#${t}`).join(" ")}</span>
+                    <a class="link-underline" onclick="navigateTo('post', '${p.slug}')">阅读 →</a>
+                  </div>
+                </li>
+              `;
+            }).join("")}
+          </ul>
+        `;
+      }
+
+      return `
+        <ul class="post-list">
+          ${posts.map((p, idx) => {
+            const numStr = String(idx + 1).padStart(2, "0");
+            const catLabel = p.resolvedCat.subName ? `${p.resolvedCat.parentName} · ${p.resolvedCat.subName}` : p.resolvedCat.parentName;
+            const draftBadge = p.draft ? `<span class="meta-badge-outline">草稿</span>` : "";
+
+            if (p.isPoetry || displayStyle === "poetry") {
+              return `
+                <li class="post-item">
+                  <div class="post-item-num">${numStr}</div>
+                  <div>
+                    <div class="post-item-header">
+                      <h3 class="post-item-title">${draftBadge}<a class="link-underline" onclick="navigateTo('post', '${p.slug}')">${p.title}</a></h3>
+                      <div class="post-item-meta">${p.date} · ${catLabel}</div>
+                    </div>
+                    <div class="post-item-poem-line">「${p.poemFirstLine}」</div>
+                  </div>
+                </li>
+              `;
+            }
+
+            return `
+              <li class="post-item">
+                <div class="post-item-num">${numStr}</div>
+                <div>
+                  <div class="post-item-header">
+                    <h3 class="post-item-title">${draftBadge}<a class="link-underline" onclick="navigateTo('post', '${p.slug}')">${p.title}</a></h3>
+                    <div class="post-item-meta">${p.date} · ${catLabel}</div>
+                  </div>
+                  <p class="post-item-summary">${p.summary}</p>
+                </div>
+              </li>
+            `;
+          }).join("")}
+        </ul>
+      `;
+    }
+
+    // 首页视图：超大站名「寸铁集」+ 竖排点缀 + 首屏精选 + 最新文章列表
+    function renderHomeView(container, posts) {
+      const homeFilter = SITE_DATA.homeCategories || ["all"];
+      const filteredPosts = homeFilter.includes("all")
+        ? posts
+        : posts.filter(p => homeFilter.includes(p.resolvedCat.parentSlug));
+
+      const featured = filteredPosts.find(p => p.featured) || filteredPosts[0];
+
+      let featuredHtml = "";
+      if (featured) {
+        const catLabel = featured.resolvedCat.subName
+          ? `${featured.resolvedCat.parentName} / ${featured.resolvedCat.subName}`
+          : featured.resolvedCat.parentName;
+        featuredHtml = `
+          <section class="featured-box">
+            <div class="featured-index-col">
+              <div class="featured-num">01</div>
+              <div class="featured-vertical-label">FEATURED</div>
+            </div>
+            <div>
+              <div class="featured-kicker">
+                <span>首屏精选 · ${catLabel}</span>
+                <span style="font-family:var(--font-mono);">${featured.date}</span>
+              </div>
+              <h2 class="featured-title">
+                <a class="link-underline" onclick="navigateTo('post', '${featured.slug}')">${featured.title}</a>
+              </h2>
+              <p class="featured-excerpt">${featured.isPoetry ? `「${featured.poemFirstLine}」` : featured.summary}</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                  ${(featured.tags || []).map(t => `<span class="tag-outline" onclick="navigateTo('tags', '${t}')">#${t}</span>`).join("")}
+                </div>
+                <a class="link-underline" style="font-family:var(--font-sans); font-size:0.8rem; font-weight:600;" onclick="navigateTo('post', '${featured.slug}')">展卷阅读 →</a>
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      container.innerHTML = `
+        <section class="hero-masthead">
+          <div>
+            <h1 class="hero-giant-title">${SITE_DATA.siteTitle}<span class="accent-dot"></span></h1>
+            <p class="hero-signature">${SITE_DATA.signature}</p>
+            <div class="hero-subline">${SITE_DATA.signatureSub}</div>
+          </div>
+          <div class="hero-vertical-stamp">${SITE_DATA.verticalStamp || "寸铁铸锋 · 惟光显影"}</div>
+        </section>
+
+        ${featuredHtml}
+
+        <section>
+          <div class="section-header-bar">
+            <h2 class="section-heading">最新文章与诗稿</h2>
+            <span class="section-count">INDEX / 共 ${filteredPosts.length} 篇</span>
+          </div>
+          ${renderPostListCollection(filteredPosts, "list")}
+        </section>
+      `;
+    }
+
+    // 栏目页视图（支持无限多级子目录筛选与独立展示样式）
+    function renderCategoryView(container, posts, catSlug, subSlug = "all") {
+      let catObj = getSortedCategories().find(c => c.slug === catSlug);
+      if (!catObj && catSlug === "uncategorized") {
+        catObj = { name: "未分类", slug: "uncategorized", description: "原所属栏目被调整或移除后自动归档于此的文章。", displayStyle: "list", children: [] };
+      }
+      if (!catObj) {
+        container.innerHTML = `<p style="padding:2rem 0;">未找到该栏目，已为你展示全部文章。</p>${renderPostListCollection(posts, "list")}`;
+        return;
+      }
+
+      let catPosts = posts.filter(p => p.resolvedCat.parentSlug === catSlug);
+      if (subSlug !== "all") {
+        catPosts = catPosts.filter(p => p.resolvedCat.subSlug === subSlug || p.resolvedCat.subName === subSlug);
+      }
+
+      let subcatBarHtml = "";
+      if (catObj.children && catObj.children.length > 0) {
+        subcatBarHtml = `
+          <div class="subcat-filter-bar">
+            <button class="btn-mono ${subSlug === 'all' ? 'active' : ''}" onclick="navigateTo('category', '${catObj.slug}', 'all')">全部${catObj.name}</button>
+            ${catObj.children.map(ch => `
+              <button class="btn-mono ${subSlug === ch.slug ? 'active' : ''}" onclick="navigateTo('category', '${catObj.slug}', '${ch.slug}')">${ch.name}</button>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      container.innerHTML = `
+        <div class="section-header-bar">
+          <div>
+            <h1 class="section-heading" style="font-size:1.5rem;">${catObj.name}</h1>
+            <p style="font-size:0.84rem; color:var(--text-secondary); margin-top:0.35rem;">${catObj.description || ""}</p>
+          </div>
+          <span class="section-count">${catPosts.length} 篇</span>
+        </div>
+        ${subcatBarHtml}
+        ${renderPostListCollection(catPosts, catObj.displayStyle || "list")}
+      `;
+    }
+
+    // 诗歌专属独立阅读页（只留标题、诗和日期）
+    function renderPoetryDedicatedView(container, post) {
+      const alignMode = POEM_ALIGN_OVERRIDE || post.align || "center";
+      const stanzas = post.body.split(/\n{2,}/).map(s => s.trim()).filter(Boolean);
+
+      container.innerHTML = `
+        <div class="poetry-dedicated-view">
+          <div class="poetry-topbar">
+            <button class="btn-subtle" onclick="navigateTo('category', '${post.resolvedCat.parentSlug}')">← 返回${post.resolvedCat.parentName}</button>
+            <div style="display:flex; gap:0.55rem; align-items:center;">
+              <button class="btn-subtle ${alignMode === 'center' ? 'active' : ''}" onclick="POEM_ALIGN_OVERRIDE='center'; renderCurrentView();">居中</button>
+              <span style="color:var(--border-strong)">/</span>
+              <button class="btn-subtle ${alignMode === 'left' ? 'active' : ''}" onclick="POEM_ALIGN_OVERRIDE='left'; renderCurrentView();">左对齐</button>
+              <span style="color:var(--border-strong)">·</span>
+              <button class="btn-subtle" onclick="openShareModal('${post.slug}')">分享诗卡</button>
+            </div>
+          </div>
+
+          <article class="poetry-stage align-${alignMode}">
+            <h1 class="poetry-only-title">${post.title}</h1>
+            ${stanzas.map(st => `<div class="poetry-stanza">${st}</div>`).join("")}
+            <div class="poetry-only-date">${post.date} · ${SITE_DATA.siteAuthor}</div>
+          </article>
+        </div>
+      `;
+    }
+
+    // 6. LaTeX 公式与 Markdown 科研文章渲染器
+    function renderLatexToHtml(tex) {
+      let s = tex.trim();
+      for (let i = 0; i < 3; i++) {
+        s = s.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g,
+          '<span class="math-frac"><span class="math-frac-num">$1</span><span class="math-frac-den">$2</span></span>');
+      }
+      s = s.replace(/\\sqrt\{([^{}]+)\}/g, '√<span style="border-top:1px solid currentColor; padding-top:1px;">($1)</span>');
+      s = s.replace(/\\sum_\{([^{}]+)\}\^\{([^{}]+)\}/g,
+        '<span class="math-op-limits"><span class="math-op-sup">$2</span><span class="math-op-sym">∑</span><span class="math-op-sub">$1</span></span>');
+      s = s.replace(/\\sum_([a-zA-Z0-9]+)/g, '∑<sub>$1</sub>');
+      s = s.replace(/\\mathrm\{([^{}]+)\}/g, '<span class="math-Inline-roman">$1</span>');
+      s = s.replace(/\\mathbf\{([^{}]+)\}/g, '<strong style="font-style:normal">$1</strong>');
+      s = s.replace(/\\bar\{([^{}]+)\}/g, '$1&#772;');
+      s = s.replace(/\\left\[/g, '[').replace(/\\right\]/g, ']');
+
+      const symMap = {
+        "\\kappa": "κ", "\\sigma": "σ", "\\delta": "δ", "\\epsilon": "ε",
+        "\\tau": "τ", "\\alpha": "α", "\\beta": "β", "\\gamma": "γ",
+        "\\lambda": "λ", "\\mu": "μ", "\\pi": "π", "\\omega": "ω",
+        "\\le": "≤", "\\ge": "≥", "\\ne": "≠", "\\approx": "≈",
+        "\\times": "×", "\\cdot": "·", "\\to": "→", "\\infty": "∞",
+        "\\dots": "…", "\\quad": "&nbsp;&nbsp;&nbsp;&nbsp;",
+        "\\top": "⊤", "\\|": "‖", "\\%": "%",
+        "\\max": '<span class="math-Inline-roman">max</span>',
+        "\\min": '<span class="math-Inline-roman">min</span>',
+        "\\ln": '<span class="math-Inline-roman">ln</span>',
+        "\\log": '<span class="math-Inline-roman">log</span>',
+        "\\exp": '<span class="math-Inline-roman">exp</span>'
+      };
+      Object.keys(symMap).forEach(k => { s = s.split(k).join(symMap[k]); });
+      s = s.replace(/_\{([^{}]+)\}/g, "<sub>$1</sub>").replace(/\^\{([^{}]+)\}/g, "<sup>$1</sup>");
+      s = s.replace(/_([a-zA-Z0-9])/g, "<sub>$1</sub>").replace(/\^([a-zA-Z0-9])/g, "<sup>$1</sup>");
+      return `<span class="math-inline">${s}</span>`;
+    }
+
+    function highlightCode(code) {
+      let esc = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      const tokens = [];
+      const saveTok = html => { const id = `___T_${tokens.length}___`; tokens.push(html); return id; };
+      esc = esc.replace(/(\x22\x22\x22[\s\S]*?\x22\x22\x22|'''[\s\S]*?'''|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')/g, m => saveTok(`<span class="tok-str">${m}</span>`));
+      esc = esc.replace(/(#.*$)/gm, m => saveTok(`<span class="tok-com">${m}</span>`));
+      esc = esc.replace(/\b(def|return|import|from|as|if|elif|else|for|in|while|class|try|except|with|True|False|None|and|or|not|tuple|dict|int|float)\b/g, '<span class="tok-kw">$1</span>');
+      esc = esc.replace(/(<span class="tok-kw">def<\/span>\s+)([a-zA-Z_]\w*)/g, '$1<span class="tok-fn">$2</span>');
+      esc = esc.replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="tok-num">$1</span>');
+      tokens.forEach((html, idx) => { esc = esc.replace(`___T_${idx}___`, html); });
+      return esc;
+    }
+
+    function renderMarkdownArticle(mdText) {
+      const toc = [];
+      const footnotes = {};
+      const references = [];
+      let eqCounter = 0;
+
+      const cleanedLines = [];
+      mdText.split("\n").forEach(line => {
+        const fnMatch = line.match(/^\[\^(\d+)\]:\s*(.+)$/);
+        if (fnMatch) { footnotes[fnMatch[1]] = fnMatch[2]; return; }
+        const refMatch = line.match(/^\[ref\]\s*(.+)$/);
+        if (refMatch) { references.push(refMatch[1]); return; }
+        cleanedLines.push(line);
+      });
+
+      let text = cleanedLines.join("\n");
+
+      const codeBlocks = [];
+      text = text.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (_, lang, code) => {
+        const idx = codeBlocks.length;
+        const encoded = encodeURIComponent(code.trimEnd());
+        codeBlocks.push(`
+          <div class="code-block-wrapper">
+            <div class="code-block-header">
+              <span>${(lang || "CODE").toUpperCase()}</span>
+              <button class="code-copy-btn" data-code="${encoded}" onclick="copyCodeBlock(this)">复制代码</button>
+            </div>
+            <pre><code>${highlightCode(code.trimEnd())}</code></pre>
+          </div>
+        `);
+        return `\n@@CODE_BLOCK_${idx}@@\n`;
+      });
+
+      const mathBlocks = [];
+      text = text.replace(/\$\$([\s\S]*?)\$\$/g, (_, tex) => {
+        eqCounter++;
+        const idx = mathBlocks.length;
+        mathBlocks.push(`
+          <div class="math-block">
+            <div class="math-block-content">${renderLatexToHtml(tex)}</div>
+            <div class="math-eq-num">(${eqCounter})</div>
+          </div>
+        `);
+        return `\n@@MATH_BLOCK_${idx}@@\n`;
+      });
+
+      function formatInline(str) {
+        const inlineCodes = [];
+        let s = str.replace(/`([^`]+)`/g, (_, c) => {
+          const id = inlineCodes.length;
+          inlineCodes.push(`<code>${c.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code>`);
+          return `@@IN_CODE_${id}@@`;
+        });
+        s = s.replace(/\$([^$\n]+)\$/g, (_, tex) => renderLatexToHtml(tex));
+        s = s.replace(/\[\^?(\d+)\]/g, (_, num) => `<a href="#fn-${num}" id="fnref-${num}" class="footnote-ref">[${num}]</a>`);
+        s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        s = s.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+        s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a class="link-underline" href="$2" target="_blank" rel="noopener">$1</a>');
+        inlineCodes.forEach((html, id) => { s = s.replace(`@@IN_CODE_${id}@@`, html); });
+        return s;
+      }
+
+      const blocks = text.split(/\n{2,}/);
+      const htmlParts = [];
+
+      blocks.forEach(block => {
+        const b = block.trim();
+        if (!b) return;
+        const cMatch = b.match(/^@@CODE_BLOCK_(\d+)@@$/);
+        if (cMatch) { htmlParts.push(codeBlocks[Number(cMatch[1])]); return; }
+        const mMatch = b.match(/^@@MATH_BLOCK_(\d+)@@$/);
+        if (mMatch) { htmlParts.push(mathBlocks[Number(mMatch[1])]); return; }
+
+        if (b.startsWith("## ")) {
+          const t = b.slice(3).trim();
+          const id = "sec-" + (toc.length + 1);
+          toc.push({ id, text: t, level: 2 });
+          htmlParts.push(`<h2 id="${id}">${formatInline(t)}</h2>`);
+          return;
+        }
+        if (b.startsWith("### ")) {
+          const t = b.slice(4).trim();
+          const id = "sec-" + (toc.length + 1);
+          toc.push({ id, text: t, level: 3 });
+          htmlParts.push(`<h3 id="${id}">${formatInline(t)}</h3>`);
+          return;
+        }
+
+        const imgMatch = b.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)$/);
+        if (imgMatch) {
+          const visual = imgMatch[2] === "builtin:convergence-svg" ? CONVERGENCE_SVG : `<img src="${imgMatch[2]}" alt="${imgMatch[1]}" />`;
+          htmlParts.push(`
+            <figure class="article-figure">
+              <div class="article-figure-box">${visual}</div>
+              ${imgMatch[3] ? `<figcaption class="article-figcaption">${formatInline(imgMatch[3])}</figcaption>` : ""}
+            </figure>
+          `);
+          return;
+        }
+
+        if (b.includes("|") && b.split("\n").length >= 2) {
+          const rows = b.split("\n").map(r => r.trim()).filter(Boolean);
+          if (rows[1] && /^\|?[\s:-]+\|/.test(rows[1])) {
+            const parseCells = row => row.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+            const headers = parseCells(rows[0]);
+            const bodyRows = rows.slice(2).map(parseCells);
+            let tbl = `<div class="table-wrap"><table><thead><tr>${headers.map(h => `<th>${formatInline(h)}</th>`).join("")}</tr></thead><tbody>`;
+            bodyRows.forEach(r => { tbl += `<tr>${r.map(c => `<td>${formatInline(c)}</td>`).join("")}</tr>`; });
+            tbl += `</tbody></table></div>`;
+            htmlParts.push(tbl);
+            return;
+          }
+        }
+
+        if (b.startsWith(">")) {
+          const q = b.split("\n").map(l => l.replace(/^>\s?/, "")).join("\n");
+          htmlParts.push(`<blockquote><p>${formatInline(q)}</p></blockquote>`);
+          return;
+        }
+        if (/^\d+\.\s/.test(b)) {
+          const items = b.split("\n").map(l => l.replace(/^\d+\.\s+/, "").trim()).filter(Boolean);
+          htmlParts.push(`<ol>${items.map(it => `<li>${formatInline(it)}</li>`).join("")}</ol>`);
+          return;
+        }
+        if (/^[-*]\s/.test(b)) {
+          const items = b.split("\n").map(l => l.replace(/^[-*]\s+/, "").trim()).filter(Boolean);
+          htmlParts.push(`<ul>${items.map(it => `<li>${formatInline(it)}</li>`).join("")}</ul>`);
+          return;
+        }
+        htmlParts.push(`<p>${formatInline(b.replace(/\n/g, "<br/>"))}</p>`);
+      });
+
+      const fnKeys = Object.keys(footnotes);
+      if (fnKeys.length > 0) {
+        htmlParts.push(`
+          <section class="footnotes-section">
+            <div style="font-family:var(--font-serif); font-weight:600; color:var(--text-primary); margin-bottom:0.6rem;">注释 (Notes)</div>
+            <ol style="padding-left:1.3rem;">
+              ${fnKeys.map(k => `<li id="fn-${k}">${formatInline(footnotes[k])} <a href="#fnref-${k}">↩</a></li>`).join("")}
+            </ol>
+          </section>
+        `);
+      }
+      if (references.length > 0) {
+        htmlParts.push(`
+          <section class="references-section">
+            <div style="font-family:var(--font-serif); font-weight:600; color:var(--text-primary); margin-bottom:0.6rem;">参考文献 (References)</div>
+            <ol style="padding-left:1.3rem;">
+              ${references.map(r => `<li>${formatInline(r)}</li>`).join("")}
+            </ol>
+          </section>
+        `);
+      }
+
+      return { html: htmlParts.join("\n"), toc };
+    }
+
+    function copyCodeBlock(btn) {
+      const code = decodeURIComponent(btn.getAttribute("data-code") || "");
+      navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = "已复制 ✓";
+        setTimeout(() => { btn.textContent = orig; }, 1500);
+      });
+    }
+
+    function renderArticleView(container, post, plate) {
+      const { html, toc } = renderMarkdownArticle(post.body);
+      const hasToc = toc.length >= 2;
+      if (hasToc) plate.classList.add("has-toc-layout");
+
+      const catPath = post.resolvedCat.subName
+        ? `${post.resolvedCat.parentName} / ${post.resolvedCat.subName}`
+        : post.resolvedCat.parentName;
+
+      const badgesHtml = (post.badges && post.badges.length > 0)
+        ? `<div style="margin-top:0.9rem;">${post.badges.map(b => `<span class="meta-badge-outline">${b}</span>`).join("")}</div>`
+        : "";
+
+      const tocHtml = hasToc ? `
+        <aside class="toc-sidebar" aria-label="文章目录">
+          <div class="toc-heading">本文目录 · CONTENTS</div>
+          <ul class="toc-list">
+            ${toc.map(item => `
+              <li class="toc-item toc-h${item.level}">
+                <a class="toc-link" href="#${item.id}" onclick="event.preventDefault(); document.getElementById('${item.id}').scrollIntoView({behavior:'smooth'});">${item.text}</a>
+              </li>
+            `).join("")}
+          </ul>
+        </aside>
+      ` : "";
+
+      const giscusHtml = SITE_DATA.enableComments ? `
+        <section style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border-color);">
+          <div style="font-family:var(--font-serif); font-weight:600; margin-bottom:0.6rem;">读者讨论区 (Static Comments)</div>
+          <p style="font-size:0.82rem; color:var(--text-secondary);">
+            ${SITE_DATA.giscusRepo ? `已连接 GitHub Discussions 仓库：<code>${SITE_DATA.giscusRepo}</code>` : `静态评论区已开启（可在配置文件中填入 giscusRepo 绑定 GitHub Discussions）。`}
+          </p>
+        </section>
+      ` : "";
+
+      container.innerHTML = `
+        <div class="article-layout ${hasToc ? 'with-toc' : ''}">
+          <article>
+            <header class="article-header">
+              <div class="article-category-line">
+                <a class="link-underline" onclick="navigateTo('home')">首页</a>
+                <span>/</span>
+                <a class="link-underline" onclick="navigateTo('category', '${post.resolvedCat.parentSlug}')">${catPath}</a>
+              </div>
+              <h1 class="article-title">${post.title}</h1>
+              <div class="article-meta-row">
+                <span>日期：${post.date}</span>
+                <span>作者：${SITE_DATA.siteAuthor}</span>
+                <span>字数：约 ${post.body.length} 字</span>
+              </div>
+              ${badgesHtml}
+            </header>
+
+            <div class="article-prose">${html}</div>
+
+            <div style="margin-top:3.2rem; padding-top:1.4rem; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+              <div style="display:flex; gap:0.45rem; flex-wrap:wrap;">
+                ${(post.tags || []).map(t => `<span class="tag-outline" onclick="navigateTo('tags', '${t}')">#${t}</span>`).join("")}
+              </div>
+              <div style="display:flex; gap:0.6rem;">
+                <button class="btn-mono" onclick="openShareModal('${post.slug}')">分享卡片</button>
+                <button class="btn-mono" onclick="navigateTo('category', '${post.resolvedCat.parentSlug}')">← 返回${post.resolvedCat.parentName}</button>
+              </div>
+            </div>
+            ${giscusHtml}
+          </article>
+          ${tocHtml}
+        </div>
+      `;
+    }
+
+    // 7. 年月归档、标签筛选与本地索引全文搜索页
+    function renderArchiveView(container, posts) {
+      const groups = {};
+      posts.forEach(p => {
+        const ym = p.date.slice(0, 7).replace("-", " 年 ") + " 月";
+        if (!groups[ym]) groups[ym] = [];
+        groups[ym].push(p);
+      });
+
+      container.innerHTML = `
+        <div class="section-header-bar">
+          <h1 class="section-heading" style="font-size:1.45rem;">按年月归档</h1>
+          <span class="section-count">共 ${posts.length} 篇</span>
+        </div>
+        ${Object.keys(groups).map(ym => `
+          <div class="archive-year-group">
+            <h2 class="archive-year-title">
+              <span>${ym}</span>
+              <span class="section-count">${groups[ym].length} 篇</span>
+            </h2>
+            ${groups[ym].map(p => `
+              <div class="archive-row">
+                <div style="display:flex; align-items:baseline; gap:1rem;">
+                  <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--text-secondary); width:52px;">${p.date.slice(5)}</span>
+                  <a class="link-underline" onclick="navigateTo('post', '${p.slug}')" style="font-family:var(--font-serif); font-weight:600;">${p.title}</a>
+                </div>
+                <span class="tag-outline" onclick="navigateTo('category', '${p.resolvedCat.parentSlug}')">${p.resolvedCat.subName || p.resolvedCat.parentName}</span>
+              </div>
+            `).join("")}
+          </div>
+        `).join("")}
+      `;
+    }
+
+    function renderTagsView(container, posts, selectedTag) {
+      const tagMap = {};
+      posts.forEach(p => { (p.tags || []).forEach(t => { tagMap[t] = (tagMap[t] || 0) + 1; }); });
+      const allTags = Object.keys(tagMap);
+      const filtered = selectedTag ? posts.filter(p => (p.tags || []).includes(selectedTag)) : posts;
+
+      container.innerHTML = `
+        <div class="section-header-bar">
+          <h1 class="section-heading" style="font-size:1.45rem;">标签索引</h1>
+          <span class="section-count">${allTags.length} 个标签</span>
+        </div>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2.2rem;">
+          <span class="tag-outline ${!selectedTag ? 'active' : ''}" onclick="navigateTo('tags', null)">全部 (${posts.length})</span>
+          ${allTags.map(t => `<span class="tag-outline ${selectedTag === t ? 'active' : ''}" onclick="navigateTo('tags', '${t}')">#${t} (${tagMap[t]})</span>`).join("")}
+        </div>
+        ${renderPostListCollection(filtered, "list")}
+      `;
+    }
+
+    function renderSearchView(container, query) {
+      container.innerHTML = `
+        <div class="section-header-bar">
+          <h1 class="section-heading" style="font-size:1.45rem;">站内全文检索（本地静态索引）</h1>
+          <span class="section-count" id="search-count-label">已索引 ${SEARCH_INDEX.length} 篇</span>
+        </div>
+        <div style="margin-bottom:2rem;">
+          <input type="text" class="input-mono" id="search-input" value="${(query || "").replace(/"/g, '&quot;')}" placeholder="输入关键词检索标题、诗句、正文、LaTeX 公式或标签……" oninput="executeLocalSearch(this.value)" />
+        </div>
+        <div id="search-results-box"></div>
+      `;
+      executeLocalSearch(query || "");
+      const inp = document.getElementById("search-input");
+      if (inp) inp.focus();
+    }
+
+    function executeLocalSearch(query) {
+      const q = (query || "").trim().toLowerCase();
+      const posts = getAllPosts();
+      const matchedSlugs = q
+        ? SEARCH_INDEX.filter(item => item.searchText.includes(q)).map(i => i.slug)
+        : posts.map(p => p.slug);
+      const matchedPosts = posts.filter(p => matchedSlugs.includes(p.slug));
+      const countEl = document.getElementById("search-count-label");
+      if (countEl) countEl.textContent = `匹配 ${matchedPosts.length} 篇`;
+      const box = document.getElementById("search-results-box");
+      if (box) box.innerHTML = renderPostListCollection(matchedPosts, "list");
+    }
+
+    // 8. 访客本地阅读偏好 vs 站点全局配置
+    function getVisitorPrefs() {
+      try {
+        const raw = localStorage.getItem(VISITOR_PREF_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) { return {}; }
+    }
+
+    function saveVisitorPrefs(prefs) {
+      try { localStorage.setItem(VISITOR_PREF_KEY, JSON.stringify(prefs)); } catch (e) {}
+    }
+
+    function applyAllVisualSettings() {
+      const root = document.documentElement;
+      const vis = getVisitorPrefs();
+
+      const mode = vis.themeMode || SITE_DATA.themeMode || "light";
+      let effectiveMode = mode;
+      if (mode === "system") {
+        effectiveMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+
+      const scheme = vis.colorScheme || SITE_DATA.colorScheme || "klein";
+      const font = vis.readingFont || SITE_DATA.readingFont || "serif";
+      const size = vis.fontSize || SITE_DATA.fontSize || 17;
+      const lh = vis.lineHeight || SITE_DATA.lineHeight || 1.9;
+
+      root.setAttribute("data-theme-mode", mode);
+      root.setAttribute("data-effective-mode", effectiveMode);
+      root.setAttribute("data-color-scheme", scheme);
+
+      root.style.setProperty("--body-font", font === "sans" ? "var(--font-sans)" : "var(--font-serif)");
+      root.style.setProperty("--body-font-size", `${size}px`);
+      root.style.setProperty("--body-line-height", lh);
+      root.style.setProperty("--plate-opacity", ((SITE_DATA.plateOpacity ?? 90) / 100).toFixed(2));
+
+      document.title = `${SITE_DATA.siteTitle} · ${SITE_DATA.siteAuthor} — 文字、诗与科研手记`;
+      document.getElementById("brand-title-text").textContent = SITE_DATA.siteTitle;
+      document.getElementById("mobile-drawer-title").textContent = SITE_DATA.siteTitle;
+      document.getElementById("footer-copyright-trigger").textContent = SITE_DATA.footerText;
+
+      const avatarBox = document.getElementById("brand-avatar-box");
+      if (SITE_DATA.avatarImage) {
+        avatarBox.innerHTML = `<img src="${SITE_DATA.avatarImage}" alt="${SITE_DATA.siteAuthor}" />`;
+      } else {
+        avatarBox.textContent = SITE_DATA.avatarText || "惟";
+      }
+
+      const modeLabels = { light: "明亮", dark: "深色", system: "随系统" };
+      document.getElementById("quick-theme-btn").textContent = modeLabels[mode] || "明/暗";
+
+      // 同步访客浮层状态
+      document.getElementById("vis-font-serif").classList.toggle("active", font !== "sans");
+      document.getElementById("vis-font-sans").classList.toggle("active", font === "sans");
+      document.getElementById("vis-slider-size").value = size;
+      document.getElementById("vis-val-size").textContent = `${size}px`;
+      document.getElementById("vis-slider-lh").value = lh;
+      document.getElementById("vis-val-lh").textContent = lh;
+
+      document.querySelectorAll(".color-dot").forEach(dot => {
+        dot.classList.toggle("active", dot.getAttribute("data-scheme") === scheme);
+      });
+    }
+
+    function toggleVisitorPopover(e) {
+      e.stopPropagation();
+      document.getElementById("visitor-reading-popover").classList.toggle("open");
+    }
+
+    function cycleVisitorThemeMode() {
+      const vis = getVisitorPrefs();
+      const cur = vis.themeMode || SITE_DATA.themeMode || "light";
+      const order = ["light", "dark", "system"];
+      vis.themeMode = order[(order.indexOf(cur) + 1) % order.length];
+      saveVisitorPrefs(vis);
+      applyAllVisualSettings();
+    }
+
+    function setVisitorFont(f) {
+      const vis = getVisitorPrefs();
+      vis.readingFont = f;
+      saveVisitorPrefs(vis);
+      applyAllVisualSettings();
+    }
+
+    function setVisitorSize(s) {
+      const vis = getVisitorPrefs();
+      vis.fontSize = Number(s);
+      saveVisitorPrefs(vis);
+      applyAllVisualSettings();
+    }
+
+    function setVisitorLineHeight(lh) {
+      const vis = getVisitorPrefs();
+      vis.lineHeight = Number(lh);
+      saveVisitorPrefs(vis);
+      applyAllVisualSettings();
+    }
+
+    function setVisitorColorScheme(sc) {
+      const vis = getVisitorPrefs();
+      vis.colorScheme = sc;
+      saveVisitorPrefs(vis);
+      applyAllVisualSettings();
+    }
+
+    function resetVisitorPrefs() {
+      localStorage.removeItem(VISITOR_PREF_KEY);
+      applyAllVisualSettings();
+    }
+
+    function renderVisitorColorDots() {
+      const row = document.getElementById("visitor-color-dots");
+      row.innerHTML = COLOR_SCHEMES.map(s => `
+        <span class="color-dot" data-scheme="${s.id}" title="${s.name}" style="background-color:${s.light};" onclick="setVisitorColorScheme('${s.id}')"></span>
+      `).join("");
+    }
+
+    function renderSchemeGalleryModal() {
+      const grid = document.getElementById("scheme-gallery-grid");
+      grid.innerHTML = COLOR_SCHEMES.map(s => {
+        const lightTextOnAccent = s.id === "acid" ? "#111111" : "#FFFFFF";
+        return `
+          <div style="border:1px solid var(--border-strong); padding:1rem; cursor:pointer;" onclick="updateDefaultColorScheme('${s.id}'); closeModal('scheme-gallery-modal');">
+            <div style="font-size:0.82rem; font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
+              <span>${s.name}</span>
+              <code style="font-size:0.72rem;">${s.light}</code>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <div style="background:#FAFAFA; color:#1A1A1A; padding:0.75rem; border:1px solid #E5E5E5; border-top:3px solid ${s.light};">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 明亮</div>
+                <div style="font-size:0.72rem; color:#6B6B6B; margin:0.3rem 0;">5% 撞色下划线与标签</div>
+                <span style="display:inline-block; font-size:0.68rem; background:${s.light}; color:${lightTextOnAccent}; padding:1px 6px;">#惟光</span>
+              </div>
+              <div style="background:#111111; color:#E8E8E8; padding:0.75rem; border:1px solid #2A2A2A; border-top:3px solid ${s.dark};">
+                <div style="font-family:var(--font-serif); font-weight:700; font-size:0.95rem;">寸铁集 · 深色</div>
+                <div style="font-size:0.72rem; color:#8E8E8E; margin:0.3rem 0;">深色对比度自动校准</div>
+                <span style="display:inline-block; font-size:0.68rem; background:${s.dark}; color:#111111; padding:1px 6px;">#惟光</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // 9. 背景按页面/栏目渲染
+    function getActivePageBgKey() {
+      if (CURRENT_ROUTE.view === "category") return CURRENT_ROUTE.param;
+      if (CURRENT_ROUTE.view === "post") {
+        const post = getAllPosts(true).find(p => p.slug === CURRENT_ROUTE.param);
+        if (post) return post.resolvedCat.parentSlug;
+      }
+      if (CURRENT_ROUTE.view === "home") return "home";
+      return "all";
+    }
+
+    function applyBackgroundForCurrentPage() {
+      const key = getActivePageBgKey();
+      const catObj = getSortedCategories().find(c => c.slug === key);
+      let pageCfg = SITE_DATA.backgrounds[key];
+      if (!pageCfg && catObj && catObj.background && catObj.background !== "inherit") {
+        pageCfg = { type: BUILTIN_BACKGROUNDS[catObj.background] ? "builtin" : "custom", value: catObj.background, grayscale: true, blur: 0, maskOpacity: 18, fit: "cover" };
+      }
+      const globalCfg = SITE_DATA.backgrounds.all || { type: "builtin", value: "paper", grayscale: true, blur: 0, maskOpacity: 16, fit: "repeat" };
+      const activeCfg = (!pageCfg || pageCfg.type === "inherit") ? globalCfg : pageCfg;
+
+      const bgLayer = document.getElementById("bg-image-layer");
+      const root = document.documentElement;
+
+      let imgUrl = "";
+      if (activeCfg.type === "builtin") imgUrl = BUILTIN_BACKGROUNDS[activeCfg.value] || "";
+      else if (activeCfg.type === "custom") imgUrl = activeCfg.value || "";
+
+      if (!imgUrl || activeCfg.type === "none") {
+        bgLayer.style.backgroundImage = "none";
+        bgLayer.classList.remove("has-bg");
+      } else {
+        bgLayer.style.backgroundImage = `url("${imgUrl}")`;
+        bgLayer.classList.add("has-bg");
+      }
+
+      root.style.setProperty("--bg-grayscale", activeCfg.grayscale !== false ? "100%" : "0%");
+      root.style.setProperty("--bg-blur", `${activeCfg.blur || 0}px`);
+      root.style.setProperty("--bg-mask-opacity", ((activeCfg.maskOpacity ?? 16) / 100).toFixed(2));
+
+      if (activeCfg.fit === "contain") {
+        root.style.setProperty("--bg-size", "contain");
+        root.style.setProperty("--bg-repeat", "no-repeat");
+      } else if (activeCfg.fit === "repeat" || activeCfg.value === "paper" || activeCfg.value === "grain") {
+        root.style.setProperty("--bg-size", activeCfg.fit === "cover" ? "cover" : "320px 320px");
+        root.style.setProperty("--bg-repeat", activeCfg.fit === "cover" ? "no-repeat" : "repeat");
+      } else {
+        root.style.setProperty("--bg-size", "cover");
+        root.style.setProperty("--bg-repeat", "no-repeat");
+      }
+    }
+
+    // 10. 作者隐藏工作台：栏目动态增删改查 & 现场演示
+    function renderStudioCategoryManager() {
+      const box = document.getElementById("studio-categories-list");
+      const cats = getSortedCategories();
+
+      box.innerHTML = cats.map((c, idx) => `
+        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-secondary);">
+          <div style="display:grid; grid-template-columns:1fr 1fr 65px; gap:0.4rem; margin-bottom:0.45rem;">
+            <input type="text" class="input-mono" value="${c.name}" placeholder="栏目名" onchange="updateCatField(${idx}, 'name', this.value)" />
+            <input type="text" class="input-mono" value="${c.slug}" placeholder="slug" onchange="updateCatField(${idx}, 'slug', this.value)" />
+            <input type="number" class="input-mono" value="${c.order || idx + 1}" title="排序" onchange="updateCatField(${idx}, 'order', Number(this.value))" />
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; margin-bottom:0.45rem;">
+            <select class="input-mono" onchange="updateCatField(${idx}, 'displayStyle', this.value)">
+              <option value="list" ${c.displayStyle === 'list' ? 'selected' : ''}>样式：普通编号列表</option>
+              <option value="card" ${c.displayStyle === 'card' ? 'selected' : ''}>样式：杂志卡片网格</option>
+              <option value="poetry" ${c.displayStyle === 'poetry' ? 'selected' : ''}>样式：诗歌首句列表</option>
+            </select>
+            <input type="text" class="input-mono" value="${(c.children || []).map(ch => ch.name).join(', ')}" placeholder="子栏目(逗号分隔)" onchange="updateCatChildren(${idx}, this.value)" />
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.74rem;">
+            <label style="display:flex; align-items:center; gap:0.3rem;">
+              <input type="checkbox" ${c.usePoetryLayout ? 'checked' : ''} onchange="updateCatField(${idx}, 'usePoetryLayout', this.checked)" />
+              启用独立诗歌排版
+            </label>
+            <button class="btn-subtle" style="color:var(--accent-text);" onclick="deleteCategoryItem(${idx})">删除此栏目</button>
+          </div>
+        </div>
+      `).join("");
+
+      // 同步背景下拉框选项
+      const bgSel = document.getElementById("bg-target-select");
+      bgSel.innerHTML = `
+        <option value="all">全局默认背景 (All)</option>
+        <option value="home">首页 (Home)</option>
+        ${cats.map(c => `<option value="${c.slug}">栏目：${c.name} (${c.slug})</option>`).join("")}
+      `;
+    }
+
+    function updateCatField(idx, field, val) {
+      const cats = getSortedCategories();
+      if (field === "name" && cats[idx].name !== val) {
+        if (!cats[idx].aliases) cats[idx].aliases = [];
+        if (!cats[idx].aliases.includes(cats[idx].name)) cats[idx].aliases.push(cats[idx].name);
+      }
+      cats[idx][field] = val;
+      SITE_DATA.categories = cats;
+      saveSiteData();
+      renderStudioCategoryManager();
+      renderNavigation();
+      renderCurrentView();
+    }
+
+    function updateCatChildren(idx, commaStr) {
+      const cats = getSortedCategories();
+      const names = commaStr.split(/[,，]/).map(s => s.trim()).filter(Boolean);
+      cats[idx].children = names.map(n => ({ name: n, slug: n, aliases: [n] }));
+      SITE_DATA.categories = cats;
+      saveSiteData();
+      renderCurrentView();
+    }
+
+    function addNewCategoryItem() {
+      SITE_DATA.categories.push({
+        name: "新栏目",
+        slug: "new-" + (SITE_DATA.categories.length + 1),
+        aliases: [],
+        description: "自定义新增栏目描述。",
+        order: SITE_DATA.categories.length + 1,
+        showInNav: true,
+        displayStyle: "card",
+        usePoetryLayout: false,
+        background: "inherit",
+        children: []
+      });
+      saveSiteData();
+      renderStudioCategoryManager();
+      renderNavigation();
+      renderCurrentView();
+    }
+
+    function deleteCategoryItem(idx) {
+      const cats = getSortedCategories();
+      cats.splice(idx, 1);
+      SITE_DATA.categories = cats;
+      saveSiteData();
+      renderStudioCategoryManager();
+      renderNavigation();
+      renderCurrentView();
+    }
+
+    // 现场一键演示：新增「读书」栏目 + 将「科研」改名为「格物」+ 调整顺序
+    function runLiveCategoryDemo() {
+      SITE_DATA.categories = [
+        {
+          name: "诗",
+          slug: "poetry",
+          aliases: ["诗歌"],
+          description: "完整保留每一次换行与呼吸的分节诗稿。",
+          order: 1,
+          showInNav: true,
+          displayStyle: "poetry",
+          usePoetryLayout: true,
+          background: "ink",
+          children: []
+        },
+        {
+          name: "读书",
+          slug: "reading",
+          aliases: ["感想", "阅读"],
+          description: "【现场新增栏目 · 卡片样式】书页边缘的铅笔批注与长夜阅读札记。",
+          order: 2,
+          showInNav: true,
+          displayStyle: "card",
+          usePoetryLayout: false,
+          background: "paper",
+          children: [
+            { name: "文学细读", slug: "lit", aliases: [] },
+            { name: "科学史札记", slug: "hist", aliases: [] }
+          ]
+        },
+        {
+          name: "随笔",
+          slug: "essay",
+          aliases: [],
+          description: "日常景物、旧书页痕迹与独行时的吉光片羽。",
+          order: 3,
+          showInNav: true,
+          displayStyle: "list",
+          usePoetryLayout: false,
+          background: "inherit",
+          children: []
+        },
+        {
+          name: "格物",
+          slug: "research",
+          aliases: ["科研"],
+          description: "【原『科研』改名演示】旧文章自动通过 aliases 映射归入此处，零死链。",
+          order: 4,
+          showInNav: true,
+          displayStyle: "list",
+          usePoetryLayout: false,
+          background: "gradient",
+          children: [
+            { name: "科研感悟", slug: "insights", aliases: ["感悟"] },
+            { name: "科研技巧", slug: "techniques", aliases: ["技巧"] },
+            { name: "读博手记", slug: "phd-log", aliases: [] }
+          ]
+        }
+      ];
+      saveSiteData();
+      renderStudioCategoryManager();
+      navigateTo("category", "reading");
+    }
+
+    function restoreDefaultCategories() {
+      SITE_DATA.categories = JSON.parse(JSON.stringify(INITIAL_CATEGORIES_BACKUP));
+      saveSiteData();
+      renderStudioCategoryManager();
+      navigateTo("home");
+    }
+
+    // 11. 隐藏工作台其他设置项同步
+    function syncStudioInputs() {
+      document.getElementById("cfg-color-scheme").value = SITE_DATA.colorScheme || "klein";
+      document.getElementById("cfg-site-title").value = SITE_DATA.siteTitle || "寸铁集";
+      document.getElementById("cfg-site-author").value = SITE_DATA.siteAuthor || "惟光";
+      document.getElementById("cfg-vertical-stamp").value = SITE_DATA.verticalStamp || "";
+      document.getElementById("cfg-site-signature").value = SITE_DATA.signature || "";
+      document.getElementById("cfg-site-sub").value = SITE_DATA.signatureSub || "";
+      document.getElementById("cfg-avatar-text").value = SITE_DATA.avatarText || "惟";
+      document.getElementById("cfg-avatar-img").value = SITE_DATA.avatarImage || "";
+      document.getElementById("cfg-site-footer").value = SITE_DATA.footerText || "";
+      document.getElementById("cfg-comments-toggle").checked = Boolean(SITE_DATA.enableComments);
+      document.getElementById("cfg-giscus-repo").value = SITE_DATA.giscusRepo || "";
+      document.getElementById("cfg-drafts-toggle").checked = Boolean(SITE_DATA.showDrafts);
+      document.getElementById("slider-plate-opacity").value = SITE_DATA.plateOpacity ?? 90;
+      document.getElementById("val-plate-opacity").textContent = `${SITE_DATA.plateOpacity ?? 90} %`;
+
+      renderStudioCategoryManager();
+      syncBgControlsForTarget("all");
+    }
+
+    function updateDefaultColorScheme(val) {
+      SITE_DATA.colorScheme = val;
+      localStorage.removeItem(VISITOR_PREF_KEY);
+      document.getElementById("cfg-color-scheme").value = val;
+      saveSiteData();
+      applyAllVisualSettings();
+    }
+
+    function updateSiteInfo() {
+      SITE_DATA.siteTitle = document.getElementById("cfg-site-title").value;
+      SITE_DATA.siteAuthor = document.getElementById("cfg-site-author").value;
+      SITE_DATA.verticalStamp = document.getElementById("cfg-vertical-stamp").value;
+      SITE_DATA.signature = document.getElementById("cfg-site-signature").value;
+      SITE_DATA.signatureSub = document.getElementById("cfg-site-sub").value;
+      SITE_DATA.avatarText = document.getElementById("cfg-avatar-text").value;
+      SITE_DATA.avatarImage = document.getElementById("cfg-avatar-img").value;
+      SITE_DATA.footerText = document.getElementById("cfg-site-footer").value;
+      SITE_DATA.enableComments = document.getElementById("cfg-comments-toggle").checked;
+      SITE_DATA.giscusRepo = document.getElementById("cfg-giscus-repo").value;
+      SITE_DATA.showDrafts = document.getElementById("cfg-drafts-toggle").checked;
+      saveSiteData();
+      applyAllVisualSettings();
+      renderCurrentView();
+    }
+
+    function syncBgControlsForTarget(targetKey) {
+      const cfg = SITE_DATA.backgrounds[targetKey] || { type: "inherit", value: "", grayscale: true, blur: 0, maskOpacity: 16, fit: "cover" };
+      document.getElementById("bg-grayscale-toggle").checked = cfg.grayscale !== false;
+      document.getElementById("slider-bg-blur").value = cfg.blur || 0;
+      document.getElementById("val-bg-blur").textContent = `${cfg.blur || 0} px`;
+      document.getElementById("slider-bg-mask").value = cfg.maskOpacity ?? 16;
+      document.getElementById("val-bg-mask").textContent = `${cfg.maskOpacity ?? 16} %`;
+      document.getElementById("bg-url-input").value = (cfg.type === "custom" && !cfg.value.startsWith("data:")) ? cfg.value : "";
+    }
+
+    function applyBuiltinBg(preset) {
+      const target = document.getElementById("bg-target-select").value;
+      if (!SITE_DATA.backgrounds[target]) SITE_DATA.backgrounds[target] = { grayscale: true, blur: 0, maskOpacity: 16, fit: "cover" };
+      if (preset === "inherit") { SITE_DATA.backgrounds[target].type = "inherit"; SITE_DATA.backgrounds[target].value = ""; }
+      else if (preset === "none") { SITE_DATA.backgrounds[target].type = "none"; SITE_DATA.backgrounds[target].value = ""; }
+      else {
+        SITE_DATA.backgrounds[target].type = "builtin";
+        SITE_DATA.backgrounds[target].value = preset;
+        SITE_DATA.backgrounds[target].fit = (preset === "paper" || preset === "grain") ? "repeat" : "cover";
+      }
+      saveSiteData();
+      applyBackgroundForCurrentPage();
+    }
+
+    function handleBgUrlChange(url) {
+      const target = document.getElementById("bg-target-select").value;
+      SITE_DATA.backgrounds[target] = Object.assign(SITE_DATA.backgrounds[target] || {}, { type: "custom", value: url.trim() });
+      saveSiteData();
+      applyBackgroundForCurrentPage();
+    }
+
+    function handleBgUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const target = document.getElementById("bg-target-select").value;
+        SITE_DATA.backgrounds[target] = Object.assign(SITE_DATA.backgrounds[target] || {}, { type: "custom", value: e.target.result, fit: "cover" });
+        saveSiteData();
+        applyBackgroundForCurrentPage();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateBgParam(param, val) {
+      const target = document.getElementById("bg-target-select").value;
+      if (!SITE_DATA.backgrounds[target]) SITE_DATA.backgrounds[target] = Object.assign({}, SITE_DATA.backgrounds.all);
+      if (param === "grayscale") SITE_DATA.backgrounds[target].grayscale = Boolean(val);
+      if (param === "blur") { SITE_DATA.backgrounds[target].blur = Number(val); document.getElementById("val-bg-blur").textContent = `${val} px`; }
+      if (param === "maskOpacity") { SITE_DATA.backgrounds[target].maskOpacity = Number(val); document.getElementById("val-bg-mask").textContent = `${val} %`; }
+      if (param === "fit") SITE_DATA.backgrounds[target].fit = val;
+      saveSiteData();
+      applyBackgroundForCurrentPage();
+    }
+
+    function resetCurrentPageBg() {
+      const target = document.getElementById("bg-target-select").value;
+      SITE_DATA.backgrounds[target] = { type: target === "all" ? "builtin" : "inherit", value: target === "all" ? "paper" : "", grayscale: true, blur: 0, maskOpacity: 16, fit: "repeat" };
+      saveSiteData();
+      applyBackgroundForCurrentPage();
+    }
+
+    function updatePlateOpacity(val) {
+      SITE_DATA.plateOpacity = Number(val);
+      document.getElementById("val-plate-opacity").textContent = `${val} %`;
+      saveSiteData();
+      applyAllVisualSettings();
+    }
+
+    function fillNewPostTemplate() {
+      const today = new Date().toISOString().slice(0, 10);
+      document.getElementById("md-editor-textarea").value = `---\ntitle: 新文章标题\ndate: ${today}\ncategory: 科研/科研技巧\ntags: [随笔, 物理化学]\nbadges: [适用场景：理论推导, 难度：进阶]\npoetryLayout: false\nalign: center\ndraft: false\nsummary: 在此填写一两行文章摘要（若为诗歌，可填写 poemFirstLine 首句）。\n---\n\n在这里使用 Markdown 撰写正文，支持行内公式 $\\mu_i = (\\partial G / \\partial n_i)_{T,P}$ 与独立公式块：\n\n$$dG = -SdT + VdP + \\sum_i \\mu_i dn_i$$\n`;
+    }
+
+    function saveMarkdownFromEditor() {
+      const raw = document.getElementById("md-editor-textarea").value.trim();
+      if (!raw) return;
+      const p = parseMarkdownFile({ filename: "temp.md", raw });
+      const fname = `${p.date}-${encodeURIComponent(p.title).replace(/%/g, "").slice(0, 16).toLowerCase()}.md`;
+      SITE_DATA.markdownFiles.unshift({ filename: fname, raw });
+      saveSiteData();
+      closeStudio();
+      navigateTo("post", parseMarkdownFile(SITE_DATA.markdownFiles[0]).slug);
+    }
+
+    function downloadCurrentMd() {
+      const raw = document.getElementById("md-editor-textarea").value;
+      const p = parseMarkdownFile({ filename: "post.md", raw });
+      downloadXmlFile(`${p.date}-${p.title}.md`, raw, "text/markdown;charset=utf-8");
+    }
+
+    function handleMdFileImport(event) {
+      const files = Array.from(event.target.files || []);
+      let count = 0;
+      files.forEach(f => {
+        const r = new FileReader();
+        r.onload = e => {
+          SITE_DATA.markdownFiles.unshift({ filename: f.name, raw: e.target.result });
+          count++;
+          if (count === files.length) { saveSiteData(); closeStudio(); navigateTo("home"); }
+        };
+        r.readAsText(f);
+      });
+    }
+
+    // 12. 导出纯净定稿 index.html + RSS + Sitemap + 分享海报
+    function exportFullSiteHTML() {
+      const cloneDoc = document.documentElement.cloneNode(true);
+      const dataScript = cloneDoc.querySelector("#initial-site-data");
+      if (dataScript) dataScript.textContent = "\n" + JSON.stringify(SITE_DATA, null, 2) + "\n";
+      cloneDoc.querySelector("#studio-drawer").classList.remove("open");
+      cloneDoc.querySelector("#drawer-backdrop").classList.remove("open");
+      const fullHtml = "<!DOCTYPE html>\n" + cloneDoc.outerHTML;
+      downloadXmlFile("index.html", fullHtml, "text/html;charset=utf-8");
+    }
+
+    function buildRssXml() {
+      const posts = getAllPosts(false);
+      const items = posts.map(p => `
+    <item>
+      <title><![CDATA[${p.title}]]></title>
+      <link>${SITE_DATA.siteUrl}/#post/${p.slug}</link>
+      <guid>${SITE_DATA.siteUrl}/#post/${p.slug}</guid>
+      <pubDate>${new Date(p.date).toUTCString()}</pubDate>
+      <category>${p.resolvedCat.parentName}</category>
+      <description><![CDATA[${p.isPoetry ? p.poemFirstLine : p.summary}]]></description>
+    </item>`).join("");
+      return `<?xml version="1.0" encoding="UTF-8" ?>\n<rss version="2.0">\n  <channel>\n    <title>${SITE_DATA.siteTitle} · ${SITE_DATA.siteAuthor}</title>\n    <link>${SITE_DATA.siteUrl}</link>\n    <description>${SITE_DATA.signature}</description>${items}\n  </channel>\n</rss>`;
+    }
+
+    function buildSitemapXml() {
+      const posts = getAllPosts(false);
+      const urls = posts.map(p => `  <url>\n    <loc>${SITE_DATA.siteUrl}/#post/${p.slug}</loc>\n    <lastmod>${p.date}</lastmod>\n  </url>`).join("\n");
+      return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>${SITE_DATA.siteUrl}/</loc>\n  </url>\n${urls}\n</urlset>`;
+    }
+
+    function downloadXmlFile(filename, content, mime = "application/xml;charset=utf-8") {
+      const blob = new Blob([content], { type: mime });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+    }
+
+    function openShareModal(slug) {
+      const post = getAllPosts(true).find(p => p.slug === slug);
+      if (!post) return;
+      CURRENT_SHARE_POST = post;
+      document.getElementById("share-card-kicker").textContent = `${SITE_DATA.siteTitle} · ${post.resolvedCat.subName || post.resolvedCat.parentName}`;
+      document.getElementById("share-card-title").textContent = post.title;
+      document.getElementById("share-card-excerpt").textContent = post.isPoetry ? `「${post.poemFirstLine}」` : post.summary;
+      document.getElementById("share-card-date").textContent = post.date;
+      document.getElementById("share-card-author").textContent = `作者：${SITE_DATA.siteAuthor}`;
+      openModal("share-modal");
+    }
+
+    function copyShareLink() {
+      if (!CURRENT_SHARE_POST) return;
+      const url = window.location.href.split("#")[0] + `#post/${CURRENT_SHARE_POST.slug}`;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.getElementById("copy-share-link-btn");
+        btn.textContent = "已复制 ✓";
+        setTimeout(() => { btn.textContent = "复制文章链接"; }, 1500);
+      });
+    }
+
+    function downloadShareCardPNG() {
+      if (!CURRENT_SHARE_POST) return;
+      const p = CURRENT_SHARE_POST;
+      const schemeId = document.documentElement.getAttribute("data-color-scheme") || "klein";
+      const schemeObj = COLOR_SCHEMES.find(s => s.id === schemeId) || COLOR_SCHEMES[1];
+      const canvas = document.createElement("canvas");
+      canvas.width = 1080;
+      canvas.height = 620;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#FAFAFA";
+      ctx.fillRect(0, 0, 1080, 620);
+      ctx.fillStyle = schemeObj.light;
+      ctx.fillRect(40, 40, 1000, 10);
+      ctx.strokeStyle = "#1A1A1A";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(40, 40, 1000, 540);
+
+      ctx.fillStyle = schemeObj.id === "acid" ? "#4F6800" : schemeObj.light;
+      ctx.font = "bold 22px monospace";
+      ctx.fillText(`${SITE_DATA.siteTitle}  /  ${p.resolvedCat.subName || p.resolvedCat.parentName}`, 92, 120);
+
+      ctx.fillStyle = "#1A1A1A";
+      ctx.font = "bold 44px serif";
+      ctx.fillText(p.title.slice(0, 22), 92, 210);
+
+      ctx.fillStyle = "#555555";
+      ctx.font = "27px serif";
+      const excerpt = p.isPoetry ? `「${p.poemFirstLine}」` : p.summary;
+      for (let i = 0; i < Math.min(excerpt.length, 84); i += 28) {
+        ctx.fillText(excerpt.slice(i, i + 28), 92, 295 + (i / 28) * 50);
+      }
+
+      ctx.fillStyle = "#6B6B6B";
+      ctx.font = "22px monospace";
+      ctx.fillText(`${p.date}   ·   ${SITE_DATA.siteAuthor}`, 92, 525);
+
+      const a = document.createElement("a");
+      a.href = canvas.toDataURL("image/png");
+      a.download = `cuntie-${p.slug}.png`;
+      a.click();
+    }
+
+    function openStudio(tab = "site") {
+      switchStudioTab(tab);
+      document.getElementById("studio-drawer").classList.add("open");
+      document.getElementById("drawer-backdrop").classList.add("open");
+    }
+
+    function closeStudio() {
+      document.getElementById("studio-drawer").classList.remove("open");
+      document.getElementById("drawer-backdrop").classList.remove("open");
+      if (window.location.hash === "#studio") history.pushState(null, "", "#home");
+    }
+
+    function switchStudioTab(tab) {
+      document.querySelectorAll(".drawer-tab").forEach(b => b.classList.toggle("active", b.getAttribute("data-tab") === tab));
+      ["site", "cats", "bg", "write"].forEach(k => {
+        document.getElementById(`pane-${k}`).style.display = k === tab ? "block" : "none";
+      });
+    }
+
+    function openModal(id) {
+      if (id === "rss-modal") document.getElementById("rss-xml-preview").value = buildRssXml();
+      if (id === "sitemap-modal") document.getElementById("sitemap-xml-preview").value = buildSitemapXml();
+      document.getElementById(id).classList.add("open");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("open");
+    }
+
+    window.addEventListener("DOMContentLoaded", initSite);
+  </script>
+
+</body></html>
